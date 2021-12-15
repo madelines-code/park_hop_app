@@ -68,4 +68,4 @@ in client/package.json add the proxy as below:
 in Index.js
 replace <React.StrictMode> with <BrowserRouter>
 
-
+Add Semantic or whichever component library you want (Bootstrap, Material, Antd)
