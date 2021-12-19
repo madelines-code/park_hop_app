@@ -69,3 +69,6 @@ in Index.js
 replace <React.StrictMode> with <BrowserRouter>
 
 Add Semantic or whichever component library you want (Bootstrap, Material, Antd)
+
+### import devise axios
+$ yarn add devise axios
