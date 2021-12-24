@@ -17,9 +17,19 @@ const AuthProvider = (props) => {
       } catch (err) { console.log(err.response);
         alert("error registering user");
     }
-    // setUser(user)
-    
+
   };
+
+  const handleEdit = async (editedUser, navigate) => {
+    try {
+      let res = await axios.put(`/api/auth/`, editedUser)
+      setUser(res.data.data)
+      navigate("/protected");  
+     } catch (err) { console.log(err.response);
+       alert("error updating user");
+   }
+  }; 
+
   
   const handleLogin = async (user, navigate) => {
     try{
@@ -57,6 +67,7 @@ const AuthProvider = (props) => {
         handleRegister,
         handleLogin,
         handleLogout,
+        handleEdit, 
         setUser
       }}>
       {props.children }
