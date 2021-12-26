@@ -27,6 +27,7 @@ const Home = () => {
   }
 
   const checkInAtPark = () => {
+    // getData()
     if (parks.length) {
     let parkLocation = Math.floor(Math.random() * parks.length);
     return parks[parkLocation];
@@ -34,6 +35,7 @@ const Home = () => {
     }
     return null;
   }
+
   let park = checkInAtPark();
   console.log(park);
 
@@ -54,14 +56,35 @@ const Home = () => {
         return (
           <div>
           <p>{c.question}</p>
-          <input placeholder="Enter answer here"></input>
+          <input value={answer} onChange={(e) => setAnswer(e.target.value)} placeholder="Enter answer here"></input>
           </div>)
       })
     }
 
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      console.log({ answer: answer, status: 'answered' });
+      // const clue = { answer: answer, status: 'answered' } };
+  
+      // if (params.id) {
+      //   // update logic here
+      //   try {
+      //     let response = await axios.put(`/api/clues/${params.id}`, clue);
+      //     console.log(response.data);
+      //     // add a congrats on submitting notice here
+      //     navigate("/home");
+      //   } catch (err) {
+      //     alert(`${err.response.data.errors}`);
+      //   }
+      // } else {
+      //   alert 'Submission failed'
+      //   }
+      // }
+    }
+
   return (
     <div>
-      <form>
+      <form onSubmit={handleSubmit}>
       {/* { renderClues()} */}
       {park && <h2>{park.name} Clues</h2>}
       {park && renderClues()}
