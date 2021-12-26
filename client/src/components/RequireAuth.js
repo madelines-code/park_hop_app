@@ -37,7 +37,7 @@ if(checkingAuthStatus){
 }
   // now check if not authed
   if (!auth.authenticated) {
-    return <Navigate to="/" />;
+    return <Navigate to="/login" />;
   }
 
   // here we are authenticated

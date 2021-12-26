@@ -7,4 +7,12 @@ class Api::CluesController < ApplicationController
     render json: User.unanswered_clues(current_user.completed_clues)
   end
 
+  def update
+    # add id to array
+    current_user.completed_clues << params[:id].to_i
+    # save to db
+    current_user.save 
+  end
+
+
 end

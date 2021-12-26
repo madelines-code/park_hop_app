@@ -14,13 +14,13 @@ function App() {
   return (
       <Routes>
         <Route element={<Layout/>}>
-          <Route path="/" element= {<Home/>}/>
           <Route path="/login" element= {<Login/>}/>
           <Route path="/register" element= {<Register/>}/>
           <Route element={<RequireAuth />}>
               {/* protected routes go here */}
             <Route path="/protected" element={<Protected />} />
             <Route path="/api/users/:id/edit" element={<EditUser/>}/>
+            <Route path="/" element= {<Home/>}/>
           </Route>
         </Route >
       </Routes>
