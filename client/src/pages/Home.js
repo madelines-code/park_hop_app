@@ -8,6 +8,7 @@ const Home = () => {
   const auth = useContext(AuthContext);
   const [clues, setClues] = useState([]);
   const [parks, setParks] = useState([]);
+  const [answer, setAnswer] = useState("");
 
   useEffect(()=>{
     getData()
@@ -15,7 +16,7 @@ const Home = () => {
 
   const getData = async ()=>{
     try{
-      // NOTE: access-toke is getting sent here (devise-axios)
+      // NOTE: access-token is getting sent here (devise-axios)
       let resClues = await axios.get('/api/clues')
       setClues(resClues.data);
       let resParks = await axios.get('/api/parks')
@@ -33,33 +34,40 @@ const Home = () => {
     }
     return null;
   }
+  let park = checkInAtPark();
+  console.log(park);
 
   const renderClues = () => {
-    const park = checkInAtPark();
     if(!park) {
       return <p>couldn't find a park</p>
     }
-    return clues.filter((c)=> {
-        if (c.park_id === park.id) {
+    let filteredClues = clues.filter((c)=> {
+      if(c.park_id === park.id) {
         return (
-          // <div>
-            // <p>{c.question}</p>
-          // </div>
-          console.log(c.question)
+          <div>
+            <p>{c.question}</p>
+          </div>
           )
-      }}
-    )
-    // <div>
-    //   <p>{park.id}</p>
-    //   <p>{park.name}</p>
-    // </div>
-    
+        }
+      })
+      return filteredClues.map(c => {
+        return (
+          <div>
+          <p>{c.question}</p>
+          <input placeholder="Enter answer here"></input>
+          </div>)
+      })
     }
-
 
   return (
     <div>
-      <h2>Home!</h2>
+      <form>
+      {/* { renderClues()} */}
+      {park && <h2>{park.name} Clues</h2>}
+      {park && renderClues()}
+      <button>Submit</button>
+      </form>
+      <hr/>
       {JSON.stringify(auth)}
       <hr/>
       {JSON.stringify(clues)}
@@ -67,9 +75,10 @@ const Home = () => {
       {JSON.stringify(parks)}
 
       <hr/>
-      <button onClick={()=>checkInAtPark()}>Check In at Park</button>
-      <hr/>
-      <div>{renderClues()}</div>
+      {/* <button onClick={()=>checkInAtPark()}>Check In at Park</button> */}
+      
+
+
     </div>
   );
 };

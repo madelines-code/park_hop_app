@@ -9,7 +9,14 @@ const Layout = () => {
   const { authenticated, handleLogout } = useContext(AuthContext);
   const renderAuthLinks = () => {
     if (authenticated) {
-      return <button onClick={() => handleLogout(x)}>Logout</button>;
+      return (
+        <>
+          <div>
+            <Link to="/parks">Parks</Link>
+          </div>
+          <button onClick={() => handleLogout(x)}>Logout</button>
+        </>
+      );
     }
     return (
       <>
@@ -22,6 +29,7 @@ const Layout = () => {
       </>
     );
   };
+
   return (
     <div>
       <div style={styles.navbar}>
@@ -31,6 +39,7 @@ const Layout = () => {
         <div>
           <Link to="/protected">Protected</Link>
         </div>
+
         {renderAuthLinks()}
       </div>
       <div style={styles.pageContainer}>
@@ -40,20 +49,20 @@ const Layout = () => {
   );
 };
 
-const styles={
+const styles = {
   content: {
     display: "flex",
     border: "1px solid",
     padding: "15px",
   },
-    outlet: {
-      backgroundColor: "lightgrey",
-      padding: "15px",
+  outlet: {
+    backgroundColor: "lightgrey",
+    padding: "15px",
   },
-    navbar: {
-      display: "flex",
-      border: "1px solid",
-    },
+  navbar: {
+    display: "flex",
+    border: "1px solid",
+  },
 };
 
 export default Layout;
