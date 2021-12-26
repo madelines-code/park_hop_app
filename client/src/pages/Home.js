@@ -28,24 +28,33 @@ const Home = () => {
   const checkInAtPark = () => {
     if (parks.length) {
     let parkLocation = Math.floor(Math.random() * parks.length);
-    // return parks[parkLocation];
-    console.log(parks[parkLocation]);
+    return parks[parkLocation];
+    // console.log(parks[parkLocation]);
     }
     return null;
   }
 
   const renderClues = () => {
-    let park = checkInAtPark();
-    
+    const park = checkInAtPark();
     if(!park) {
       return <p>couldn't find a park</p>
     }
-    return (
-      <div>
-        <h1>here's a list of clues</h1>
-      </div>
+    return clues.filter((c)=> {
+        if (c.park_id === park.id) {
+        return (
+          // <div>
+            // <p>{c.question}</p>
+          // </div>
+          console.log(c.question)
+          )
+      }}
     )
-  }
+    // <div>
+    //   <p>{park.id}</p>
+    //   <p>{park.name}</p>
+    // </div>
+    
+    }
 
 
   return (
@@ -56,10 +65,11 @@ const Home = () => {
       {JSON.stringify(clues)}
       <hr/>
       {JSON.stringify(parks)}
-      {/* <p>{checkInAtPark()}</p> */}
+
       <hr/>
-      <button onClick={checkInAtPark}>Check In at Park</button>
-      
+      <button onClick={()=>checkInAtPark()}>Check In at Park</button>
+      <hr/>
+      <div>{renderClues()}</div>
     </div>
   );
 };

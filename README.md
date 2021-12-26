@@ -2,7 +2,8 @@
 
 This project is meant to be a starting for homework/projects.
 It is Rails 6 API app with React frontend.
-
+### Clone repo
+git clone ...
 ### Github setup
 in database.yml 
 replace all repository name with new name
@@ -38,3 +39,10 @@ def configure_permitted_parameters
 end
 ```
 ### Build out controllers
+
+
+
+I'm starting a project that will be an app for a program called Park Hop. In summary, it's a scavenger hunt where people go around to different parks and look for answers to clues. (This is something that my last job needed but didn't have) So far I have built some models which you can see the relationship of here: https://www.figma.com/file/okjOYq0OpHhAbnhET2DMp9/Park-Hop-Database?node-id=0%3A1
+My goal is to build a progress area (my CluesCompleted component) that shows dots with different colors for the status "answered" or "unanswered". (I want to eventually have some form validation where the answers can be automatically marked correct or incorrect, but in my mind there's no way to account for all of the varied answers people might type in. Unless it's some kind of Google level stuff... )
+This is what I want my progress map to look like: https://www.figma.com/file/98NAuw7xtlQzuQGn4IkVHx/Park-Hop-Desktop-Layout
+In order to do this I need to be able to assign colors to my clue status. I also need to be able to have each user have their own set of clues. 
