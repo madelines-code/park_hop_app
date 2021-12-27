@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { AuthContext } from "../providers/AuthProvider";
 import { useContext } from "react";
 import axios from "axios";
+import { Centered } from "../components/StyledComponents";
 
 
 const Home = () => {
@@ -9,6 +10,7 @@ const Home = () => {
   const [clues, setClues] = useState([]);
   const [parks, setParks] = useState([]);
   const [answer, setAnswer] = useState("");
+  const [park, setPark] = useState("");
 
   useEffect(()=>{
     getData()
@@ -30,14 +32,14 @@ const Home = () => {
     // getData()
     if (parks.length) {
     let parkLocation = Math.floor(Math.random() * parks.length);
-    return parks[parkLocation];
+    setPark(parks[parkLocation]);
     // console.log(parks[parkLocation]);
     }
     return null;
   }
 
-  let park = checkInAtPark();
-  console.log(park);
+  // let park = checkInAtPark();
+  // console.log(park);
 
   const renderClues = () => {
     if(!park) {
@@ -46,7 +48,7 @@ const Home = () => {
     let filteredClues = clues.filter((c)=> {
       if(c.park_id === park.id) {
         return (
-          <div>
+          <div >
             <p>{c.question}</p>
           </div>
           )
@@ -54,9 +56,9 @@ const Home = () => {
       })
       return filteredClues.map(c => {
         return (
-          <div>
+          <div className='form' key={c.id} id={c.id}>
           <p>{c.question}</p>
-          <input value={answer} onChange={(e) => setAnswer(e.target.value)} placeholder="Enter answer here"></input>
+          <input onChange={(e) => setAnswer(e.target.value)} placeholder="Enter answer here"></input>
           </div>)
       })
     }
@@ -83,12 +85,16 @@ const Home = () => {
     }
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <div className='homepage'>
+      {/* //NEED TO WATCH VIDEO TO ATTACH DIFFERENT VALUES TO FIELDS CORRESPONDING TO USER 
+      MUST DO THIS BEFORE CONTINUING WITH SUBMIT ISSUE */}
+      <button className='buttonStyle' onClick={()=>checkInAtPark()}>Check In at Park</button>
+      
+      <form className='form' onSubmit={handleSubmit}>
       {/* { renderClues()} */}
       {park && <h2>{park.name} Clues</h2>}
       {park && renderClues()}
-      <button>Submit</button>
+      <button className='buttonStyle'>Submit</button>
       </form>
       <hr/>
       {JSON.stringify(auth)}
@@ -98,12 +104,9 @@ const Home = () => {
       {JSON.stringify(parks)}
 
       <hr/>
-      {/* <button onClick={()=>checkInAtPark()}>Check In at Park</button> */}
-      
-
-
     </div>
   );
 };
+
 
 export default Home;
