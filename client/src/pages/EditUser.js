@@ -1,21 +1,48 @@
-import {useContext, useState} from "react";
-import { useNavigate } from "react-router";
+import {useContext, useEffect, useState} from "react";
+import { useNavigate, useParams } from "react-router";
 import { AuthContext } from "../providers/AuthProvider";
+import axios from "axios";
 
-const EditUser= () => {
+
+const EditUser= (props) => {
   const {handleEdit, auth} = useContext(AuthContext);
-  const [email, setEmail] = useState(auth.email)
-  const [image, setImage] = useState(auth.image)
-  const [name, setName] = useState(auth.name)
-  const [kids, setKids] = useState(auth.kids)
+  const [email, setEmail] = useState("")
+  const [image, setImage] = useState("")
+  const [name, setName] = useState("")
+  const [id, setId] = useState("")
+  const [kids, setKids] = useState([])
   const navigate = useNavigate();
+  const params = useParams();
+
+
+  useEffect(() => {
+    getData();
+  }, [])
+
+  // const getData = () => {
+  //   setEmail(`${auth.email}`)
+  //   setImage("2")
+  //   setName("3")
+  // }
+  const getData = async () => {
+    let res = await axios.get(`/api/users/${params.id}`)
+    setName(res.data.name)
+    setEmail(res.data.email)
+    setImage(res.data.image)
+    setKids(res.data.kids)
+    setId(res.data.id)
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleEdit({email, image, name, kids}, navigate);
+    console.log({email, image, name, kids})
+    return handleEdit({email, image, name, kids, id}, navigate);
   };
 
+
+
   return (
-    <>
+    <div>
       <h2>Edit My Profile</h2>
       <form onSubmit={handleSubmit}>
         <p>Name</p>
@@ -36,7 +63,7 @@ const EditUser= () => {
         onChange={(e)=>{setKids(e.target.value);}}/>
         <button>Submit</button>
       </form>
-    </>
+    </div>
   );
 };
 

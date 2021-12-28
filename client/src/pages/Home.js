@@ -9,7 +9,11 @@ const Home = () => {
   const auth = useContext(AuthContext);
   const [clues, setClues] = useState([]);
   const [parks, setParks] = useState([]);
-  const [answer, setAnswer] = useState("");
+  const [submitted_answer, setSubmitted_answer] = useState("")
+  const [clueId, setClueId] = useState("")
+  const [clueAnswers, setClueAnswers] = useState([])
+  // const [answer1, setAnswer1] = useState("");
+  // const [answer2, setAnswer2] = useState("");
   const [park, setPark] = useState("");
 
   useEffect(()=>{
@@ -56,16 +60,28 @@ const Home = () => {
       })
       return filteredClues.map(c => {
         return (
-          <div className='form' key={c.id} id={c.id}>
+          <div className='formContainer' key={c.id} id={c.id}>
           <p>{c.question}</p>
-          <input onChange={(e) => setAnswer(e.target.value)} placeholder="Enter answer here"></input>
+          <p>{c.id}</p>
+          <input {...c} value={c.submitted_answer} onChange={(e) => handleChange(e.target.value)} placeholder="Enter answer here"></input>
           </div>)
       })
     }
 
+// maybe try a handle change function that sets values separately somehow
+
+const handleChange = async (e, id) => {
+  // const answer1 = {submitted_answer: answer}
+  setSubmitted_answer(e)
+  setClueId(id);
+  console.log({submitted_answer, id: clueId, status: 'answered' })
+}
+
     const handleSubmit = async (e) => {
+      
       e.preventDefault();
-      console.log({ answer: answer, status: 'answered' });
+      handleChange();
+      // console.log({ answer: answer1, status: 'answered' });
       // const clue = { answer: answer, status: 'answered' } };
   
       // if (params.id) {
@@ -85,7 +101,7 @@ const Home = () => {
     }
 
   return (
-    <div className='homepage'>
+    <div className='form'>
       {/* //NEED TO WATCH VIDEO TO ATTACH DIFFERENT VALUES TO FIELDS CORRESPONDING TO USER 
       MUST DO THIS BEFORE CONTINUING WITH SUBMIT ISSUE */}
       <button className='buttonStyle' onClick={()=>checkInAtPark()}>Check In at Park</button>
@@ -94,7 +110,7 @@ const Home = () => {
       {/* { renderClues()} */}
       {park && <h2>{park.name} Clues</h2>}
       {park && renderClues()}
-      <button className='buttonStyle'>Submit</button>
+      {park && <button className='buttonStyle'>Submit</button>}
       </form>
       <hr/>
       {JSON.stringify(auth)}

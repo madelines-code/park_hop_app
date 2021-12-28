@@ -29,7 +29,7 @@ const CluesCompleted = () => {
     'pink',
     'brown',
     'grey',
-    'black',
+    // 'black',
   ]
 
   const renderClues = () => {
@@ -42,7 +42,7 @@ const CluesCompleted = () => {
       </Grid.Column>
     ))} */}
         {clues.map((clue) => (
-      <Grid.Column color={clue.status} key={clue.id}>
+      <Grid.Column color={statuscolors} key={clue.id}>
         <p>{clue.status}</p>
         <p>{clue.id}</p>
         <p>{clue.park_id}</p>

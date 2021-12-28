@@ -22,7 +22,7 @@ const AuthProvider = (props) => {
 
   const handleEdit = async (editedUser, navigate) => {
     try {
-      let res = await axios.put(`/api/auth/`, editedUser)
+      let res = await axios.put(`/api/users/${editedUser.id}`, editedUser)
       setUser(res.data.data)
       navigate("/protected");  
      } catch (err) { console.log(err.response);

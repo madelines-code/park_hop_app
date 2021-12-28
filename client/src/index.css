@@ -29,7 +29,7 @@ code {
   padding: 15px;
   width: 300px;
   font-size: 20px;
-  margin: 5px;
+  margin: 25px;
 }
 
 .buttonContainer {
@@ -40,4 +40,10 @@ code {
   display: flex;
   align-items: center;
   flex-direction: column;
+}
+.formContainer {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 10px;
 }
