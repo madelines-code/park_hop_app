@@ -8,7 +8,7 @@ const Clue = (props) => {
   const park = props
   const parkClues = props
   const [submitted_answer, setSubmitted_answer] = useState("")
-  // const [clue, setClue]=useState({})
+  const [clue, setClue]=useState({})
   const [clueId, setClueId] = useState("")
   const navigate = useNavigate();
 
@@ -17,10 +17,10 @@ useEffect(()=>{
   getClues();
 }, [])
 
-// useEffect(()=>{
-//   setClue(randomClue())
-//   console.log(clue)
-// }, [clues])
+useEffect(()=>{
+  setClue(randomClue())
+  console.log(clue)
+}, [clues])
 
 const getClues = () => {
   console.log(parkClues.parkClues)
@@ -58,22 +58,30 @@ const getClues = () => {
   //       }
   //     }
 
-  const recordClue = (id) => {
-    id.preventDefault()
-    const filteredClues = parkClues.parkClues.filter((clue)=> clue.id !== id )
-    setClues(filteredClues)
+  const handleSubmit = async (id) => {
+    try {
+      await axios.put(`/api/clues/${id}`)
+      const filteredClues = clues.filter((clue)=> clue.id !== id )
+      console.log(filteredClues)
+      setClues(filteredClues)
+    } catch(err){
+      alert ('err in submit');
+    }
+
+    // id.preventDefault()
+
   }
 
   const randomClue = () => {
     console.log(parkClues)
-    if (parkClues.parkClues.length) {
-      const index = Math.floor(Math.random() * parkClues.parkClues.length);
-      return parkClues.parkClues[index];
+    if (clues.length) {
+      const index = Math.floor(Math.random() * clues.length);
+      return clues[index];
     }}
 
 
   const renderClue = () => {
-    let clue = randomClue();
+    // let clue = randomClue();
     console.log(clue)
     if (!clue) {
       return <p>Park complete!</p>
@@ -89,7 +97,7 @@ const getClues = () => {
         
         
         <br/>
-        <button >submit</button>
+        <button onClick = {()=>handleSubmit(clue.id)}>submit</button>
       </Form>
     )
   }
