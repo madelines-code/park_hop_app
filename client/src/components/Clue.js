@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from "react"
 import axios from "axios";
 import { useNavigate} from "react-router";
+import { Form } from "semantic-ui-react";
 
 const Clue = (props) => {
   const [clues, setClues] = useState([]);
   const park = props
   const parkClues = props
   const [submitted_answer, setSubmitted_answer] = useState("")
-  const [clue, setClue]=useState({})
+  // const [clue, setClue]=useState({})
   const [clueId, setClueId] = useState("")
   const navigate = useNavigate();
 
 useEffect(()=>{
-  getClues()
+  console.log(parkClues.parkClues)
+  getClues();
 }, [])
 
 // useEffect(()=>{
@@ -21,7 +23,9 @@ useEffect(()=>{
 // }, [clues])
 
 const getClues = () => {
+  console.log(parkClues.parkClues)
   setClues(parkClues.parkClues)
+  
 }
 
       
@@ -29,12 +33,10 @@ const getClues = () => {
     
   //   return null;
   // }
-  // const handleChange = (props) => {
-  //   setSubmitted_answer(props.e.target.value)
-  //   setClueId(props.c.id)
-  //   // setClueId(item)
-  //   console.log({submitted_answer, id: clueId, status: 'answered' })
-  // }
+  const handleChange = (props) => {
+    setSubmitted_answer(props.e)
+    console.log(submitted_answer)
+  }
 
   // const handleSubmit = async (e) => {
   //   e.preventDefault();
@@ -56,10 +58,11 @@ const getClues = () => {
   //       }
   //     }
 
-  // const recordClue = () => {
-  //   const filteredClues = parkClues.parkClues.filter((clue)=> clue.id !== id )
-  //   setClues(filteredClues)
-  // }
+  const recordClue = (id) => {
+    id.preventDefault()
+    const filteredClues = parkClues.parkClues.filter((clue)=> clue.id !== id )
+    setClues(filteredClues)
+  }
 
   const randomClue = () => {
     console.log(parkClues)
@@ -68,21 +71,26 @@ const getClues = () => {
       return parkClues.parkClues[index];
     }}
 
+
   const renderClue = () => {
-    let clue = (randomClue())
+    let clue = randomClue();
     console.log(clue)
     if (!clue) {
       return <p>Park complete!</p>
     }
     return (
-      <form >
-        <h3>{clue.question}</h3>
+      <Form >
+        <Form.Field>
+        <label>{clue.question}</label>
         <input key = {clue.id} value={submitted_answer} onChange = {(e) => {
           setSubmitted_answer(e.target.value)
-        }} placeholder="Enter answer here"></input>
+        }} placeholder="Enter answer here"/>
+        </Form.Field>
+        
+        
         <br/>
         <button >submit</button>
-      </form>
+      </Form>
     )
   }
 
