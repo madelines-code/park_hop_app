@@ -3,6 +3,7 @@ import { AuthContext } from "../providers/AuthProvider";
 import { useContext } from "react";
 import axios from "axios";
 import { Centered } from "../components/StyledComponents";
+import Clue from "../components/Clue";
 
 
 const Home = () => {
@@ -59,21 +60,23 @@ const Home = () => {
         }
       })
       return filteredClues.map(c => {
+        
         return (
           <div className='formContainer' key={c.id} id={c.id}>
           <p>{c.question}</p>
           <p>{c.id}</p>
-          <input {...c} value={c.submitted_answer} onChange={(e) => handleChange(e.target.value)} placeholder="Enter answer here"></input>
+          <input key = {c.id} value={c.submitted_answer} onChange={(e)=>handleChange(e.target.value)} placeholder="Enter answer here"></input>
           </div>)
       })
     }
 
 // maybe try a handle change function that sets values separately somehow
 
-const handleChange = async (e, id) => {
+const handleChange = async (e) => {
   // const answer1 = {submitted_answer: answer}
-  setSubmitted_answer(e)
-  setClueId(id);
+  setSubmitted_answer(e.target.value)
+  // setClueId(c.id)
+  // setClueId(item)
   console.log({submitted_answer, id: clueId, status: 'answered' })
 }
 
@@ -109,15 +112,17 @@ const handleChange = async (e, id) => {
       <form className='form' onSubmit={handleSubmit}>
       {/* { renderClues()} */}
       {park && <h2>{park.name} Clues</h2>}
-      {park && renderClues()}
+      {/* {park && renderClues()} */}
       {park && <button className='buttonStyle'>Submit</button>}
       </form>
       <hr/>
-      {JSON.stringify(auth)}
+      {park && <Clue park={park}/>}
       <hr/>
+      {JSON.stringify(auth)}
+      {/* <hr/>
       {JSON.stringify(clues)}
       <hr/>
-      {JSON.stringify(parks)}
+      {JSON.stringify(parks)} */}
 
       <hr/>
     </div>

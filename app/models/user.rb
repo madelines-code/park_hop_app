@@ -20,4 +20,10 @@ class User < ActiveRecord::Base
     ids = ids.empty? ? [0] : ids 
     Clue.where("id NOT IN (?)", ids)
   end
+
+  def get_completed_clues
+    ids = self.completed_clues.empty? ? [0] : completed_clues
+    Clue.where("id NOT IN (?)", ids)
+  end
+
 end

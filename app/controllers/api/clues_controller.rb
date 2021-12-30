@@ -14,5 +14,9 @@ class Api::CluesController < ApplicationController
     current_user.save 
   end
 
+  def completed_clues 
+    render json: current_user.get_completed_clues
+  end
+
 
 end
