@@ -11,20 +11,18 @@ const Clue = (props) => {
   const [clueId, setClueId] = useState("")
   const navigate = useNavigate();
 
-// useEffect(()=>{
-//   setClues(parkClues.parkClues)
-// }, [])
+useEffect(()=>{
+  getClues()
+}, [])
 
 // useEffect(()=>{
 //   setClue(randomClue())
 //   console.log(clue)
 // }, [clues])
 
-  // setClues(array)
-  // if (clues.length) {
-  //   const index = Math.floor(Math.random() * clues.length);
-  //   setClue(clues[index]);
-  // }
+const getClues = () => {
+  setClues(parkClues.parkClues)
+}
 
       
 
@@ -58,6 +56,11 @@ const Clue = (props) => {
   //       }
   //     }
 
+  // const recordClue = () => {
+  //   const filteredClues = parkClues.parkClues.filter((clue)=> clue.id !== id )
+  //   setClues(filteredClues)
+  // }
+
   const randomClue = () => {
     console.log(parkClues)
     if (parkClues.parkClues.length) {
@@ -78,7 +81,7 @@ const Clue = (props) => {
           setSubmitted_answer(e.target.value)
         }} placeholder="Enter answer here"></input>
         <br/>
-        <button>submit</button>
+        <button >submit</button>
       </form>
     )
   }
