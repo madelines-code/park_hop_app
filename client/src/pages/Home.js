@@ -11,7 +11,7 @@ const Home = () => {
   const [clues, setClues] = useState([]);
   const [parks, setParks] = useState([]);
   const [submitted_answer, setSubmitted_answer] = useState("")
-  const [parkClues, setParkClues] = useState("")
+  const [parkClues, setParkClues] = useState([])
   const [clueId, setClueId] = useState("")
   const [clueAnswers, setClueAnswers] = useState([])
   // const [answer1, setAnswer1] = useState("");
@@ -24,7 +24,7 @@ const Home = () => {
 
   useEffect(()=>{
     listParkClues(park)
-    console.log(parkClues)
+    console.log(parkClues);
   }, [park])
 
   const getData = async ()=>{
@@ -40,7 +40,7 @@ const Home = () => {
   }
 
   const checkInAtPark = () => {
-    // getData()
+    console.log(parks)
     if (parks.length) {
     let parkLocation = Math.floor(Math.random() * parks.length);
     setPark(parks[parkLocation]);
@@ -57,23 +57,20 @@ const Home = () => {
       return <p>couldn't find a park</p>
     }
     setParkClues(clues.filter((c)=> c.park_id === park.id))
-      console.log(parkClues);
+      
     }
 
   return (
     <div className='form'>
-      {/* //NEED TO WATCH VIDEO TO ATTACH DIFFERENT VALUES TO FIELDS CORRESPONDING TO USER 
-      MUST DO THIS BEFORE CONTINUING WITH SUBMIT ISSUE */}
       <button className='buttonStyle' onClick={()=>checkInAtPark()}>Check In at Park</button>
-      <hr/>
       {park && <h2>{park.name} Clue</h2>}
       {park && <Clue park={park} parkClues={parkClues}/> }
       <hr/>
       {JSON.stringify(auth)}
-      {/* <hr/>
-      {JSON.stringify(clues)}
+      {/* {/* <hr/>
+      {JSON.stringify(clues)} */}
       <hr/>
-      {JSON.stringify(parks)} */}
+      {JSON.stringify(parkClues)}
 
       <hr/>
     </div>

@@ -13,13 +13,14 @@ const Clue = (props) => {
   const navigate = useNavigate();
 
 useEffect(()=>{
-  console.log(parkClues.parkClues)
+  
   getClues();
-}, [])
+  console.log(parkClues)
+}, [parkClues])
 
 useEffect(()=>{
   setClue(randomClue())
-  console.log(clue)
+  // console.log(clue)
 }, [clues])
 
 const getClues = () => {
@@ -28,35 +29,6 @@ const getClues = () => {
   
 }
 
-      
-
-    
-  //   return null;
-  // }
-  const handleChange = (props) => {
-    setSubmitted_answer(props.e)
-    console.log(submitted_answer)
-  }
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-    
-  //   const updatedClue = { submitted_answer: submitted_answer, id: e.clue.id, status: 'answered' } ;
-  //   console.log(updatedClue)
-  //     if (e.clue.id) {
-  //       // update logic here
-  //       try {
-  //         let response = await axios.put(`/api/clues/${e.clue.id}`, clue);
-  //         console.log(response.data);
-  //         // add a congrats on submitting notice here
-  //         // navigate("/home");
-  //       } catch (err) {
-  //         alert(`${err.response.data.errors}`);
-  //       }
-  //     } else {
-  //       alert ('Submission failed')
-  //       }
-  //     }
 
   const handleSubmit = async (id) => {
     try {
@@ -68,7 +40,6 @@ const getClues = () => {
       alert ('err in submit');
     }
 
-    // id.preventDefault()
 
   }
 

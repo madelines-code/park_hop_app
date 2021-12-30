@@ -1,54 +1,63 @@
-import React, { useEffect, useState } from "react";
-import { Grid } from "semantic-ui-react";
+import React, { useContext, useEffect, useState } from "react";
+import { Container, Grid } from "semantic-ui-react";
 import _ from 'lodash'
 import axios from "axios";
+import { AuthContext } from "../providers/AuthProvider";
+
 
 const CluesCompleted = () => {
   const [clues, setClues] = useState([]);
+  const [completedClues, setCompletedClues] = useState([]);
+  const auth = useContext(AuthContext);
 
     useEffect(() => {
     getData();
   }, []);
 
   const getData = async () => {
-    let res = await axios.get("/api/clues");
-    console.log(res.data)
-    setClues(res.data)
+    let resClues = await axios.get("/api/clues/all");
+    setClues(resClues.data)
+    let resCompleted = await axios.get("/api/clues");
+    console.log(resCompleted.data)
+    setCompletedClues(resCompleted.data)
+    
   };
 
-  const statuscolors = [
-    'red',
-    'green',
-    'yellow',
-    'olive',
-    'green',
-    'teal',
-    'blue',
-    'violet',
-    'purple',
-    'pink',
-    'brown',
-    'grey',
-    // 'black',
-  ]
+  // const statuscolors = [ 
+  //   completed {color: green},
+  //   incomplete {
+  //     color: gray
+  //   }
+  //   'red',
+  //   'green',
+  //   'yellow',
+  //   'olive',
+  //   'green',
+  //   'teal',
+  //   'blue',
+  //   'violet',
+  //   'purple',
+  //   'pink',
+  //   'brown',
+  //   'grey',
+  //   // 'black',
+  // ]
 
   const renderClues = () => {
 
     return (
-    <Grid columns={5} padded>
+    <Container>
     {/* {colors.map((color) => (
       <Grid.Column color={color} key={color}>
         {color}
       </Grid.Column>
     ))} */}
         {clues.map((clue) => (
-      <Grid.Column color={statuscolors} key={clue.id}>
-        <p>{clue.status}</p>
+      <Grid.Column  key={clue.id}>
         <p>{clue.id}</p>
-        <p>{clue.park_id}</p>
       </Grid.Column>
     ))}
-  </Grid>
+  </Container>
     )
   }
   
