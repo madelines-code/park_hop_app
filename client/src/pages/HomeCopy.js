@@ -11,7 +11,6 @@ const Home = () => {
   const [clues, setClues] = useState([]);
   const [parks, setParks] = useState([]);
   const [submitted_answer, setSubmitted_answer] = useState("")
-  const [parkClues, setParkClues] = useState("")
   const [clueId, setClueId] = useState("")
   const [clueAnswers, setClueAnswers] = useState([])
   // const [answer1, setAnswer1] = useState("");
@@ -21,11 +20,6 @@ const Home = () => {
   useEffect(()=>{
     getData()
   }, [])
-
-  useEffect(()=>{
-    listParkClues(park)
-    console.log(parkClues)
-  }, [park])
 
   const getData = async ()=>{
     try{
@@ -44,6 +38,7 @@ const Home = () => {
     if (parks.length) {
     let parkLocation = Math.floor(Math.random() * parks.length);
     setPark(parks[parkLocation]);
+    // console.log(parks[parkLocation]);
     }
     return null;
   }
@@ -51,13 +46,61 @@ const Home = () => {
   // let park = checkInAtPark();
   // console.log(park);
 
-  const listParkClues = () => {
-    console.log(park);
+  const renderClues = () => {
     if(!park) {
       return <p>couldn't find a park</p>
     }
-    setParkClues(clues.filter((c)=> c.park_id === park.id))
-      console.log(parkClues);
+    let filteredClues = clues.filter((c)=> {
+      if(c.park_id === park.id) {
+        return (
+          <div >
+            <p>{c.question}</p>
+          </div>
+          )
+        }
+      })
+      return filteredClues.map(c => {
+        
+        return (
+          <div className='formContainer' key={c.id} id={c.id}>
+          <p>{c.question}</p>
+          <p>{c.id}</p>
+          <input key = {c.id} value={c.submitted_answer} onChange={(e)=>handleChange(e.target.value)} placeholder="Enter answer here"></input>
+          </div>)
+      })
+    }
+
+// maybe try a handle change function that sets values separately somehow
+
+const handleChange = async (e) => {
+  // const answer1 = {submitted_answer: answer}
+  setSubmitted_answer(e.target.value)
+  // setClueId(c.id)
+  // setClueId(item)
+  console.log({submitted_answer, id: clueId, status: 'answered' })
+}
+
+    const handleSubmit = async (e) => {
+      
+      e.preventDefault();
+      handleChange();
+      // console.log({ answer: answer1, status: 'answered' });
+      // const clue = { answer: answer, status: 'answered' } };
+  
+      // if (params.id) {
+      //   // update logic here
+      //   try {
+      //     let response = await axios.put(`/api/clues/${params.id}`, clue);
+      //     console.log(response.data);
+      //     // add a congrats on submitting notice here
+      //     navigate("/home");
+      //   } catch (err) {
+      //     alert(`${err.response.data.errors}`);
+      //   }
+      // } else {
+      //   alert 'Submission failed'
+      //   }
+      // }
     }
 
   return (
@@ -67,7 +110,7 @@ const Home = () => {
       <button className='buttonStyle' onClick={()=>checkInAtPark()}>Check In at Park</button>
       <hr/>
       {park && <h2>{park.name} Clue</h2>}
-      {park && <Clue park={park} parkClues={parkClues}/> }
+      {park && <Clue park={park}/>}
       <hr/>
       {JSON.stringify(auth)}
       {/* <hr/>
