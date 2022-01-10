@@ -7,7 +7,7 @@ const Clue = (props) => {
   const [clues, setClues] = useState([]);
   const park = props
   const parkClues = props
-  const [myanswer, setMyanswer] = useState("")
+  const [submitted_answer, setSubmitted_answer] = useState("")
   const [clue, setClue]=useState({})
   const [clueId, setClueId] = useState("")
   const navigate = useNavigate();
@@ -32,13 +32,11 @@ const getClues = () => {
 
   const handleSubmit = async (id) => {
     try {
-      let clueData = {myanswer, completed:true, id}
-      await axios.put(`/api/userclues/${id}`, clueData)
-      console.log(clues)
-      const filteredClues = clues.filter((clue)=> clue.completed !== true )
+      await axios.put(`/api/clues/${id}`)
+      const filteredClues = clues.filter((clue)=> clue.id !== id )
       console.log(filteredClues)
       setClues(filteredClues)
-      setMyanswer("")
+      setSubmitted_answer("")
     } catch(err){
       alert ('err in submit');
     }
@@ -64,14 +62,14 @@ const getClues = () => {
       <Form >
         <Form.Field>
         <label>{clue.question}</label>
-        <input key = {clue.clue_id} value={myanswer} onChange = {(e) => {
-          setMyanswer(e.target.value)
+        <input key = {clue.id} value={submitted_answer} onChange = {(e) => {
+          setSubmitted_answer(e.target.value)
         }} placeholder="Enter answer here"/>
         </Form.Field>
         
         
         <br/>
-        <button onClick = {()=>handleSubmit(clue.clue_id)}>submit</button>
+        <button onClick = {()=>handleSubmit(clue.id)}>submit</button>
       </Form>
     )
   }

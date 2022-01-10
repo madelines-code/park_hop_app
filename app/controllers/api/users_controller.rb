@@ -6,6 +6,7 @@ class Api::UsersController < ApplicationController
     render json: other_users
   end
 
+
   def show
     render json: @user
   end

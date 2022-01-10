@@ -4,9 +4,11 @@ Rails.application.routes.draw do
   namespace :api do
     resources :users
     get "/clues/all", to: "clues#all"
+    get "/userclues/:id", to: "userclues#myclues"
     resources :parks
     resources :clues
     resources :kids
+    resources :userclues
   end
 
 end

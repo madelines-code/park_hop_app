@@ -30,7 +30,7 @@ const Home = () => {
   const getData = async ()=>{
     try{
       // NOTE: access-token is getting sent here (devise-axios)
-      let resClues = await axios.get('/api/clues')
+      let resClues = await axios.get(`/api/userclues/${auth.id}`)
       setClues(resClues.data);
       let resParks = await axios.get('/api/parks')
       setParks(resParks.data);
@@ -62,17 +62,12 @@ const Home = () => {
 
   return (
     <div className='form'>
+      <h2>Welcome to Park Hop!</h2>
+      <h3>Get started exploring parks all over Upstate SC.</h3>
+      <p>Click the Parks tab to view a map of parks and get directions. Once you're at one of our parks, tap "Check In at Park" to start completing clues.</p>
       <button className='buttonStyle' onClick={()=>checkInAtPark()}>Check In at Park</button>
       {park && <h2>{park.name} Clue</h2>}
-      {park && <Clue park={park} parkClues={parkClues}/> }
-      <hr/>
-      {JSON.stringify(auth)}
-      {/* {/* <hr/>
-      {JSON.stringify(clues)} */}
-      <hr/>
-      {JSON.stringify(parkClues)}
-
-      <hr/>
+      {park && <Clue park={park} parkClues={parkClues}/>} 
     </div>
   );
 };

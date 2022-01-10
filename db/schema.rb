@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_27_180357) do
+ActiveRecord::Schema.define(version: 2022_01_10_003340) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,11 +18,9 @@ ActiveRecord::Schema.define(version: 2021_12_27_180357) do
   create_table "clues", force: :cascade do |t|
     t.text "question"
     t.text "answer"
-    t.string "status"
     t.bigint "park_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "submitted_answer"
     t.index ["park_id"], name: "index_clues_on_park_id"
   end
 
@@ -40,6 +38,17 @@ ActiveRecord::Schema.define(version: 2021_12_27_180357) do
     t.string "geolocation"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "userclues", force: :cascade do |t|
+    t.boolean "completed"
+    t.bigint "user_id", null: false
+    t.bigint "clue_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "myanswer"
+    t.index ["clue_id"], name: "index_userclues_on_clue_id"
+    t.index ["user_id"], name: "index_userclues_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -67,7 +76,6 @@ ActiveRecord::Schema.define(version: 2021_12_27_180357) do
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
     t.text "kids"
-    t.text "completed_clues"
     t.string "role"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
@@ -77,4 +85,6 @@ ActiveRecord::Schema.define(version: 2021_12_27_180357) do
 
   add_foreign_key "clues", "parks"
   add_foreign_key "kids", "users"
+  add_foreign_key "userclues", "clues"
+  add_foreign_key "userclues", "users"
 end
