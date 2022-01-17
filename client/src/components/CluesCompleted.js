@@ -42,11 +42,9 @@ const CluesCompleted = () => {
   const renderClues = () => {
     return clues.map((clue) => {
       return(
-        <Grid.Column textAlign='center' className='progressDot'>
-      <div className={`${clue.completed ? "completed" : "incomplete"}`}>
+      <div key={clue.clue_id} className={`${clue.completed ? "completed" : "incomplete"}`}>
       <p>{clue.clue_id}</p>
       </div>
-    </Grid.Column>
     )}
     )
   }

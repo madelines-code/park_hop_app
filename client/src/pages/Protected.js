@@ -16,7 +16,7 @@ const Protected = () => {
   const getData = async ()=>{
     try{
       // NOTE: access-token is getting sent here (devise-axios)
-      let res = await axios.get('/api/clues')
+      let res = await axios.get('/api/userclues')
       setUserclues(res.data);
     } catch(err){
       alert('err in getData()')

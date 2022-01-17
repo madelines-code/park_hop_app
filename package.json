@@ -2,5 +2,30 @@
   "dependencies": {
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^2.0.4"
-  }
+  },
+  "name": "park_hop_1",
+  "description": "This project is meant to be a starting for homework/projects. It is Rails 6 API app with React frontend. ### Clone repo git clone ... ### Github setup in database.yml  replace all repository name with new name Rails db:create Bundle Rails db:migrate Rails db:seed Git remote remove origin Git remote -v (check it’s gone) Install new repo (git remote add origin …..URL) Rails s -p 3001",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "build": "cd client && npm install --only=dev && npm install && npm run build && cd ..",
+    "deploy": "cp -a client/build/. public/",
+    "heroku-postbuild": "npm run build && npm run deploy && echo 'Client Built'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/madelines-code/park_hop_app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/madelines-code/park_hop_app/issues"
+  },
+  "homepage": "https://github.com/madelines-code/park_hop_app#readme"
 }

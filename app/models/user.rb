@@ -12,19 +12,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :validatable
   include DeviseTokenAuth::Concerns::User
 
-  #class method
-  def self.unanswered_clues (ids)
-    ids = ids.empty? ? [0] : ids 
-    Clue.where("id NOT IN (?)", ids).order("RANDOM()")
-  end
-  def self.completed_clues (ids)
-    ids = ids.empty? ? [0] : ids 
-    Clue.where("id NOT IN (?)", ids)
-  end
 
-  def get_completed_clues
-    ids = self.completed_clues.empty? ? [0] : completed_clues
-    Clue.where("id NOT IN (?)", ids)
-  end
 
 end
