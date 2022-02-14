@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :clues
     resources :kids
     resources :userclues
+    put 'users/:id/profile_image', to: 'users#profile_image'
   end
 
   get '*other', to: 'static#index'

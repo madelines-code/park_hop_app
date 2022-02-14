@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-require "faker"
+# require "faker"
 
 # u1.kids.create(user_id: u1.id, name: Faker::Name.name, age: rand(12))
 # u2.Kid.create(user_id: u2.id, name: Faker::Name.name, age: rand(12))
@@ -37,7 +37,7 @@ c8 = Clue.create(park_id: p4.id, question: 'On the small playground, find the mu
 c9 = Clue.create(park_id: p5.id, question: 'There are 10 of us. I will help you balance walk along the path. Which one am I?', answer: 'stepping stone' , status: 'unanswered')
 
 5.times do
-  user = User.create(email: Faker::Internet.email, password: "moneybrain", name: Faker::Name.name, image: Faker::Avatar.image)
+  user = User.create(email: 'test@test.com', password: "moneybrain", name: Martha, image: 'https://robohash.org/voluptateseaut.png?size=300x300&set=set1')
   
  # each user will have a clue
   9.times do |i|

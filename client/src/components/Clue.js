@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import axios from "axios";
 import { useNavigate} from "react-router";
-import { Form } from "semantic-ui-react";
+import { Button, Form } from "semantic-ui-react";
 
 const Clue = (props) => {
   const [clues, setClues] = useState([]);
@@ -71,7 +71,8 @@ const getClues = () => {
         
         
         <br/>
-        <button onClick = {()=>handleSubmit(clue.clue_id)}>submit</button>
+        {/* <button onClick = {()=>handleSubmit(clue.clue_id)}>submit</button> */}
+        <Button onClick = {()=>handleSubmit(clue.clue_id)}>Button</Button>
       </Form>
     )
   }
