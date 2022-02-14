@@ -11,22 +11,30 @@ const Protected = () => {
 
   useEffect(()=>{
     getData()
-  }, [])
+  }, [auth])
 
   const getData = async ()=>{
+    console.log(auth.id)
+    if (auth.id)
     try{
       // NOTE: access-token is getting sent here (devise-axios)
-      let res = await axios.get('/api/userclues')
+      let res = await axios.get(`/api/userclues/${auth.id}`)
       setUserclues(res.data);
     } catch(err){
       alert('err in getData()')
+    }
+    else {
+      window.location.reload()
     }
   }
 
 // can I use useEffect here to reload page when data changes? 
 
   return (
+      
+        
     <div className='homepage'>
+      {auth && <>
       <h2>My Profile</h2>
       <h3>Hey, {auth.name}!</h3>
       <img src={auth.image} />
@@ -38,7 +46,11 @@ const Protected = () => {
       <div className='homepage'>
       <CluesCompleted/>
       </div>
+</> }
     </div>
+    
+     
+      
   );
 };
 

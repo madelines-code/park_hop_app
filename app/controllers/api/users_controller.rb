@@ -1,5 +1,7 @@
 class Api::UsersController < ApplicationController
     before_action :set_user, only: [:show, :update, :destroy]
+    before_action :authenticate_user!, except: [:index, :search, :show]
+
 
   def index
     other_users = User.all
@@ -29,6 +31,36 @@ class Api::UsersController < ApplicationController
   end
 
 
+
+  def profile_image 
+    def profile_image
+      file = params[:file]
+
+      if file
+          begin
+              puts "saving to cloudinary"
+              cloud_image = Cloudinary::Uploader.upload(file, public_id: file.original_filename, secure: true, resource_type: :auto)
+          rescue => e
+              puts "error occurred"
+              p e
+              render json: {errors: e}, status: 422
+              return
+          end
+      end
+
+      if cloud_image && cloud_image['secure_url']
+          current_user.image = cloud_image['secure_url']
+      end
+
+      if current_user.save
+          render json: current_user
+      else
+          render json: {errors: e}, status: 422
+      end
+  end
+end
+
+
   def destroy
     @user.destroy
     render json: @user
@@ -40,7 +72,7 @@ class Api::UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:email, :password, :name, :image, :kids )
+      params.require(:user).permit(:email, :password, :name, :image, :kids, :id )
     end
 
 end
