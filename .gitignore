@@ -7,6 +7,9 @@
 # Ignore bundler config.
 /.bundle
 
+#ignore .env
+.env
+
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
@@ -22,7 +25,6 @@
 /storage/*
 !/storage/.keep
 .byebug_history
-.env
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
