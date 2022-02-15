@@ -15,6 +15,8 @@ const Protected = () => {
 
   const getData = async ()=>{
     console.log(auth.id)
+    console.log(auth.name)
+    console.log(auth.image)
     if (auth.id)
     try{
       // NOTE: access-token is getting sent here (devise-axios)
@@ -24,7 +26,7 @@ const Protected = () => {
       alert('err in getData()')
     }
     else {
-      window.location.reload()
+      window.location.reload(false)
     }
   }
 

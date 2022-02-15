@@ -1,4 +1,5 @@
 class Api::UsersController < ApplicationController
+  # authenticate user is defined by devise token auth
     before_action :set_user, only: [:show, :update, :destroy]
     before_action :authenticate_user!, except: [:index, :search, :show]
 
@@ -23,24 +24,31 @@ class Api::UsersController < ApplicationController
   #   end
   # end
 
-  def update
-    if (@user.update(user_params))
-      render json: @user
-    end
+  # def update
+  #   if (@user.update(user_params))
+  #     render json: @user
+  #   end
 
-  end
+  # end
 
 
 
-  def profile_image 
+
     def profile_image
-      file = params[:file]
+      # puts 'current_user:'
+      # p current_user
+      # p @user
 
-      if file
+      # puts 'params'
+      # p params
+
+      file = params[:fileYo]
+
+      if file 
           begin
               puts "saving to cloudinary"
               cloud_image = Cloudinary::Uploader.upload(file, public_id: file.original_filename, secure: true, resource_type: :auto)
-          rescue => e
+            rescue => e
               puts "error occurred"
               p e
               render json: {errors: e}, status: 422
@@ -50,16 +58,17 @@ class Api::UsersController < ApplicationController
 
       if cloud_image && cloud_image['secure_url']
           current_user.image = cloud_image['secure_url']
-      end
-
+        end
+        
+        current_user.name = params[:name]
       if current_user.save
+        p 'current user'
+        p current_user
           render json: current_user
       else
           render json: {errors: e}, status: 422
       end
   end
-end
-
 
   def destroy
     @user.destroy
@@ -72,7 +81,7 @@ end
     end
 
     def user_params
-      params.require(:user).permit(:email, :password, :name, :image, :kids, :id )
+      params.require(:user).permit(:email, :password, :name, :image, :kids, :id, :file )
     end
 
 end

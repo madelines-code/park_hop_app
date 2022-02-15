@@ -63,20 +63,22 @@ const EditUser= (props) => {
 }
 
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log('handle submit clicked')
     console.log(files)
-    // let data = new FormData();
-    // if(files[0] && files[0].file ){
-    //   data.append('fileYo', files[0].file)
-    // }
-    // try{
-    //   let res = await axios.put(`/api/users/${auth.id}/profile_image`, data)
-    //   console.log('res: ', res)
-    // } catch(err){
-    //     console.log(err)
-    // }
+    let data = new FormData();
+      data.append('fileYo', files[0].file) 
+      data.append('name', name) 
+      console.log(data)
+    try{
+      let res = await axios.put(`/api/users/profile_image`, data)
+      console.log('res: ', res)
+      auth.setUser(res.data);
+      navigate('/protected')
+    } catch(err){
+        console.log(err)
+    }
     // console.log({email, name, kids})
     // return handleEdit({email, name, kids, id},navigate);
   };
@@ -87,11 +89,11 @@ const EditUser= (props) => {
     <div>
       <h2>Edit My Profile</h2>
       <form onSubmit={handleSubmit}>
-        {/* <p>Name</p>
+        <p>Name</p>
         <input 
         value={name} 
         onChange={(e)=>{setName(e.target.value);}}/>
-        <p>Email</p>
+        {/* <p>Email</p>
         <input 
         value={email} 
         onChange={(e)=>{setEmail(e.target.value);}}/> */}

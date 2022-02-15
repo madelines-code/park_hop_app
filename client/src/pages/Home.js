@@ -62,6 +62,7 @@ const Home = () => {
 
   return (
     <div className='form'>
+      <h1>Hey {auth.name}!</h1>
       <h2>Welcome to Park Hop!</h2>
       <h3>Get started exploring parks all over Upstate SC.</h3>
       <p>Click the Parks tab to view a map of parks and get directions. Once you're at one of our parks, tap "Check In at Park" to start completing clues.</p>
