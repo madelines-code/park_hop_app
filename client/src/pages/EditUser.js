@@ -24,7 +24,7 @@ registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview);
 
 
 
-const EditUser= (props) => {
+const EditUser= () => {
   const {handleEdit} = useContext(AuthContext);
   const [email, setEmail] = useState("")
   const [image, setImage] = useState("")
@@ -68,9 +68,16 @@ const EditUser= (props) => {
     console.log('handle submit clicked')
     console.log(files)
     let data = new FormData();
-      data.append('fileYo', files[0].file) 
+    if (files === []) {
+      data.append('fileYo', files[0].file)
       data.append('name', name) 
-      console.log(data)
+      data.append('email', email) 
+      console.log(data)}
+      else {
+        data.append('name', name) 
+        data.append('email', email) 
+        console.log(data)
+      }
     try{
       let res = await axios.put(`/api/users/profile_image`, data)
       console.log('res: ', res)
@@ -79,8 +86,6 @@ const EditUser= (props) => {
     } catch(err){
         console.log(err)
     }
-    // console.log({email, name, kids})
-    // return handleEdit({email, name, kids, id},navigate);
   };
 
 
@@ -93,10 +98,12 @@ const EditUser= (props) => {
         <input 
         value={name} 
         onChange={(e)=>{setName(e.target.value);}}/>
-        {/* <p>Email</p>
+        <p>Email</p>
         <input 
         value={email} 
-        onChange={(e)=>{setEmail(e.target.value);}}/> */}
+        onChange={(e)=>{setEmail(e.target.value);}}/>
+        <p>Current Image</p>
+        <img src={image}/>
           <h1>only 1 photo and don't do api call on change</h1>
           <FilePond
               files={files}
@@ -105,10 +112,6 @@ const EditUser= (props) => {
               name="files"
               labelIdle='Drag & Drop your files or <span class="filepond--label-action">Browse</span>'
           />
-        {/* <p>Number of Kids</p>
-        <input 
-        value={kids} 
-        onChange={(e)=>{setKids(e.target.value);}}/> */}
         <button type='Submit'>Update</button>
       </form>
     </div>

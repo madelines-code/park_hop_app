@@ -10,6 +10,7 @@ import Layout from './components/Layout';
 import AuthProvider from './providers/AuthProvider';
 import EditUser from './pages/EditUser';
 import Parks from './pages/Parks';
+import AddKid from './pages/AddKid';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route path="/protected" element={<Protected />} />
             <Route path="/parks" element={<Parks />} />
             <Route path="/api/users/:id/edit" element={<EditUser/>}/>
+            <Route path="/api/users/:id/add_kid" element={<AddKid/>}/>
             <Route path="/" element= {<Home/>}/>
           </Route>
         </Route >

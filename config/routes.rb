@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :kids
     resources :userclues
     put '/users/profile_image', to:'users#profile_image'
+    get "users/:id/user_kids", to: "users#user_kids"  
   end
 
   get '*other', to: 'static#index'

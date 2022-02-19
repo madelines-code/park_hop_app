@@ -14,34 +14,12 @@ class Api::UsersController < ApplicationController
     render json: @user
   end
 
-  # def create
-  #   @user = User.new(user_params)
-
-  #   if (@user.save)
-  #     render json: @user
-  #   else
-  #     render json: {error: @user.errors}, status: 422
-  #   end
-  # end
-
-  # def update
-  #   if (@user.update(user_params))
-  #     render json: @user
-  #   end
-
-  # end
-
-
+  def user_kids
+    render json: User.user_kids(params[:id])
+  end
 
 
     def profile_image
-      # puts 'current_user:'
-      # p current_user
-      # p @user
-
-      # puts 'params'
-      # p params
-
       file = params[:fileYo]
 
       if file 
@@ -61,6 +39,7 @@ class Api::UsersController < ApplicationController
         end
         
         current_user.name = params[:name]
+        current_user.email = params[:email]
       if current_user.save
         p 'current user'
         p current_user
@@ -74,6 +53,8 @@ class Api::UsersController < ApplicationController
     @user.destroy
     render json: @user
   end
+
+
 
   private
     def set_user
