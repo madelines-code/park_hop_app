@@ -38,11 +38,11 @@ class Api::KidsController < ApplicationController
     end
   
     def kid_params
-      params.require(:kid).permit(:name, :birthdate, :user_id)
+      params.require(:kid).permit(:name, :birthdate, :user_id, :avatar)
     end
   
     def kid_params_update
-      params.require(:kid).permit(:name, :birthdate)
+      params.require(:kid).permit(:name, :birthdate, :avatar)
     end
   
   end

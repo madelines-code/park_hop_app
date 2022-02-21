@@ -15,6 +15,16 @@ code {
 .homepage {
   background-color: rgb(0, 168, 0) !important;
   color: white;
+  height: 100%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.background {
+  background-color: rgb(0, 168, 0) !important;
+  color: white;
   height: 100vh;
   margin: auto;
   display: flex;
@@ -57,6 +67,18 @@ code {
   width: 250px;
 }
 
+.avatarList {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 10px;
+  width: 350px;
+}
+
+.highlighted {
+  border: 3px solid rgb(221, 147, 9);
+}
 
 .completed {
   background-color: rgb(221, 147, 9) !important;

@@ -42,7 +42,7 @@ const Layout = () => {
 
         {renderAuthLinks()}
       </div>
-      <div style={styles.pageContainer}>
+      <div className="background">
         <Outlet />
       </div>
     </div>
