@@ -21,7 +21,6 @@ const AddKid = () => {
   const [name, setName] = useState("")
   const [avatar, setAvatar] = useState("")
   const [birthdate, setBirthdate] = useState("")
-  const [highlightedd, setHighlightedd] = useState("")
   const navigate = useNavigate();
   const params = useParams();
   const auth = useContext(AuthContext);
@@ -41,7 +40,6 @@ const AddKid = () => {
   const selectAvatar = (avatar) => {
     setAvatar(avatar)
     console.log(avatar)
-    setHighlightedd("highlighted")
   }
 
   const handleSubmit = async (e) => {
@@ -74,14 +72,14 @@ const AddKid = () => {
         onChange={(e)=>{setBirthdate(e.target.value);}}/>
         <div className='avatarList'>
          
-        <Image className={highlightedd} src={Bunny} size='tiny' circular onClick={()=>selectAvatar(Bunny)}/>
-        <Image className={highlightedd} src={Cat} size='tiny' value={Cat} circular onClick={()=>selectAvatar(Cat)}/>
-        <Image className={highlightedd} src={Dog} size='tiny' circular onClick={()=>selectAvatar(Dog)}/>
-        <Image className={highlightedd} src={Fox} size='tiny' circular onClick={()=>selectAvatar(Fox)}/>
-        <Image className={highlightedd} src={Gorilla} size='tiny' circular onClick={()=>selectAvatar(Gorilla)}/>
-        <Image className={highlightedd} src={Koala} size='tiny' circular onClick={()=>selectAvatar(Koala)}/>
-        <Image className={highlightedd} src={Lion} size='tiny' circular onClick={()=>selectAvatar(Lion)}/>
-        <Image className={highlightedd} src={Tiger} size='tiny' circular onClick={()=>selectAvatar(Tiger)}/>
+        <Image className={(avatar === Bunny) ? 'highlighted' : '' } src={Bunny} size='tiny' circular onClick={()=>selectAvatar(Bunny)}/>
+        <Image className={(avatar === Cat) ? 'highlighted' : '' } src={Cat} size='tiny' value={Cat} circular onClick={()=>selectAvatar(Cat)}/>
+        <Image className={(avatar === Dog) ? 'highlighted' : '' } src={Dog} size='tiny' circular onClick={()=>selectAvatar(Dog)}/>
+        <Image className={(avatar === Fox) ? 'highlighted' : '' } src={Fox} size='tiny' circular onClick={()=>selectAvatar(Fox)}/>
+        <Image className={(avatar === Gorilla) ? 'highlighted' : '' } src={Gorilla} size='tiny' circular onClick={()=>selectAvatar(Gorilla)}/>
+        <Image className={(avatar === Koala) ? 'highlighted' : '' } src={Koala} size='tiny' circular onClick={()=>selectAvatar(Koala)}/>
+        <Image className={(avatar === Lion) ? 'highlighted' : '' } src={Lion} size='tiny' circular onClick={()=>selectAvatar(Lion)}/>
+        <Image className={(avatar === Tiger) ? 'highlighted' : '' } src={Tiger} size='tiny' circular onClick={()=>selectAvatar(Tiger)}/>
         </div>
         <button type='Submit'>Add Kid</button>
       </form>

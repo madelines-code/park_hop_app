@@ -6,6 +6,7 @@ import { AuthContext } from "../providers/AuthProvider";
 import axios from "axios";
 import EditUser from "./EditUser";
 import { render } from "react-dom";
+import { Image } from "semantic-ui-react";
 
 const Protected = () => {
   const auth = useContext(AuthContext);
@@ -46,6 +47,8 @@ const Protected = () => {
         <div key={k.id}>
         <p>{k.name}</p>
         <p>{k.birthdate}</p>
+        <Image src={k.avatar} size='tiny' circular/>
+
       </div>
       )
     })
