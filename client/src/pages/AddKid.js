@@ -49,6 +49,7 @@ const AddKid = () => {
     try {
       let res = await axios.post(`/api/kids`, kid);
       console.log(res)
+      navigate('/protected')
     } catch (err) {
       console.log(err);
       console.log(err.response);

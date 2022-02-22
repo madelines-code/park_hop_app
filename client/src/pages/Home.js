@@ -41,10 +41,19 @@ const Home = () => {
 
   const checkInAtPark = () => {
     console.log(parks)
-    if (parks.length) {
-    let parkLocation = Math.floor(Math.random() * parks.length);
-    setPark(parks[parkLocation]);
+    if ("geolocation" in navigator) {
+      console.log("Available");
+      navigator.geolocation.getCurrentPosition(function(position) {
+        console.log("Latitude is :", position.coords.latitude);
+        console.log("Longitude is :", position.coords.longitude);
+      });
+    } else {
+      console.log("Not Available");
     }
+    // if (parks.length) {
+    // let parkLocation = Math.floor(Math.random() * parks.length);
+    // setPark(parks[parkLocation]);
+    
     return null;
   }
 

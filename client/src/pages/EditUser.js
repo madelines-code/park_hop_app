@@ -68,7 +68,7 @@ const EditUser= () => {
     console.log('handle submit clicked')
     console.log(files)
     let data = new FormData();
-    if (files === []) {
+    if (files !== []) {
       data.append('fileYo', files[0].file)
       data.append('name', name) 
       data.append('email', email) 
