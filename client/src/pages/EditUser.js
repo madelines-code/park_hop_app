@@ -56,7 +56,6 @@ const EditUser= () => {
 
   const handleUpdate = (files)=>{
     // console.log(x)
-    console.log(files)
     console.log(files[0])
     console.log(files[0].file)
     setFiles(files)
