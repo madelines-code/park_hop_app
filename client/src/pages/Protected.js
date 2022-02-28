@@ -1,12 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router";
 import CluesCompleted from "../components/CluesCompleted";
 import { AuthContext } from "../providers/AuthProvider";
 import axios from "axios";
 import EditUser from "./EditUser";
-import { render } from "react-dom";
-import { Image } from "semantic-ui-react";
+import { Button, Card, Image } from 'semantic-ui-react'
 
 const Protected = () => {
   const auth = useContext(AuthContext);
@@ -44,12 +42,30 @@ const Protected = () => {
     console.log(kids)
     return kids.map((k)=> {
       return (
-        <div key={k.id}>
-        <p>{k.name}</p>
-        <p>{k.birthdate}</p>
-        <Image src={k.avatar} size='tiny' circular/>
-
-      </div>
+        <Card key={k.id}>
+      <Card.Content>
+        <Image
+          floated='right'
+          size='small'
+          src={k.avatar}
+        />
+        <Card.Header>{k.name}</Card.Header>
+        <Card.Meta>{k.birthdate}</Card.Meta>
+        <Card.Description>
+          Steve wants to add you to the group <strong>best friends</strong>
+        </Card.Description>
+      </Card.Content>
+      <Card.Content extra>
+        {/* <div className='ui two buttons'> */}
+          <Button size='small' basic color='green'>
+            Edit
+          </Button>
+          <Button size='small' basic color='red'>
+            Delete
+          </Button>
+        {/* </div> */}
+      </Card.Content>
+    </Card>
       )
     })
   }
@@ -67,7 +83,7 @@ const Protected = () => {
       <p>email: {auth.email}</p>
         <p>My ID {auth.id}</p>
         <h3>Kids</h3>
-      {kids !== {} && renderKids()}
+        <Card.Group> {kids !== {} && renderKids()}</Card.Group>
       <button className='buttonStyle' onClick={()=>navigate(`/api/users/${auth.id}/edit`)} state = {{auth}} >Edit Profile</button>
       <button className='buttonStyle' onClick={()=>navigate(`/api/users/${auth.id}/add_kid`)} state = {{auth}} >Add Kid</button>
       
