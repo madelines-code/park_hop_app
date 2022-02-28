@@ -63,7 +63,7 @@ const Protected = () => {
       <h2>My Profile</h2>
       <CluesCompleted/>
       <h3>Hey, {auth.name}!</h3>
-      <img src={auth.image} />
+      <img src={auth.image} style={{width: '200px'}}/>
       <p>email: {auth.email}</p>
         <p>My ID {auth.id}</p>
         <h3>Kids</h3>
