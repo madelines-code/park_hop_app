@@ -33,10 +33,14 @@ const Protected = () => {
     }
   }
 
-  const deleteItem = async (id) => {
+  const deleteKid = async (id) => {
     await axios.delete(`/api/kids/${id}`)
     const filteredKids = kids.filter((kid) => kid.id !== id)
     setKids(filteredKids)
+}
+
+const editKidPage = (id) => {
+  navigate(`/api/kids/${id}`)
 }
 
   const renderKids = () => {
@@ -55,11 +59,11 @@ const Protected = () => {
         <Card.Meta>{k.birthdate}</Card.Meta>
         <Card.Meta stye={{margin: '10px'}}>
           <div className='ui two buttons'>
-          <Button icon basic color='green'>
+          <Button icon basic color='green' onClick={()=>editKidPage(k.id)} id = {k.id} >
           <Icon name='edit outline' />
           </Button>
           <Button icon>
-            <Icon name='trash alternate outline' id={k.id} onClick={()=>deleteItem(k.id)}/>
+            <Icon name='trash alternate outline' id={k.id} onClick={()=>deleteKid(k.id)}/>
           </Button>
           </div>
           </Card.Meta>

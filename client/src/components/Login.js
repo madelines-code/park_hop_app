@@ -1,5 +1,6 @@
 import {useContext, useState} from "react";
 import { useNavigate } from "react-router";
+import { Button, Card, Input } from "semantic-ui-react";
 import { AuthContext } from "../providers/AuthProvider";
 
 const Login = () => {
@@ -14,20 +15,25 @@ const Login = () => {
   };
 
   return (
-    <>
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        <p>Email</p>
-        <input 
-        value={email} 
-        onChange={(e)=>{setEmail(e.target.value);}}/>
-        <p>Password</p>
-        <input 
-        value={password} 
-        onChange={(e)=>{setPassword(e.target.value);}}/>
-        <button >Login</button>
-      </form>
-    </>
+    <div className='homepage'>
+          <Card style = {{margin: '40px'}}>
+          <Card.Content  style={{margin: 'auto'}}>
+            <Card.Header style={{textAlign: 'center'}}>Login</Card.Header>
+            <form onSubmit={handleSubmit}>
+            <p>Email</p>
+            <Input 
+            value={email} 
+            onChange={(e)=>{setEmail(e.target.value);}}/>
+            <p>Password</p>
+            <Input 
+            value={password} 
+            onChange={(e)=>{setPassword(e.target.value);}}/>
+            <br/>
+            <Button style = {{margin: '20px auto'}}>Login</Button>
+          </form>
+          </Card.Content>
+        </Card>
+    </div>
   );
 };
 
