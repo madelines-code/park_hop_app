@@ -37,7 +37,7 @@ const Layout = () => {
           <Link style={styles.navbarText} to="/">Home</Link>
         </div>
         <div>
-          <Link style={styles.navbarText} to="/protected">Protected</Link>
+          <Link style={styles.navbarText} to="/protected">Profile</Link>
         </div>
 
         {renderAuthLinks()}

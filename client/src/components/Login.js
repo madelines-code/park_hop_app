@@ -18,18 +18,21 @@ const Login = () => {
     <div className='homepage'>
           <Card style = {{margin: '40px'}}>
           <Card.Content  style={{margin: 'auto'}}>
-            <Card.Header style={{textAlign: 'center'}}>Login</Card.Header>
+            <Card.Header style = {{marginTop: '20px'}}>Login</Card.Header>
             <form onSubmit={handleSubmit}>
             <p>Email</p>
             <Input 
             value={email} 
+            style={{ width:"250px"}}
             onChange={(e)=>{setEmail(e.target.value);}}/>
             <p>Password</p>
             <Input 
             value={password} 
+            style={{ width:"250px"}}
+            type='password'
             onChange={(e)=>{setPassword(e.target.value);}}/>
             <br/>
-            <Button style = {{margin: '20px auto'}}>Login</Button>
+            <Button style = {{marginTop: '20px', marginBottom: '20px'}}>Login</Button>
           </form>
           </Card.Content>
         </Card>

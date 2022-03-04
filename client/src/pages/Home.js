@@ -4,6 +4,8 @@ import { useContext } from "react";
 import axios from "axios";
 import { Centered } from "../components/StyledComponents";
 import Clue from "../components/Clue";
+import ParkHopLogo from "../2020_Park_Hop_Logo_Vector.svg"
+import { Image } from "semantic-ui-react";
 
 
 const Home = () => {
@@ -71,8 +73,9 @@ const Home = () => {
 
   return (
     <div className='form'>
-      <h1>Hey {auth.name}!</h1>
-      <h2>Welcome to Park Hop!</h2>
+      <h2 style={{margin: '20px'}}>Welcome to Park Hop!</h2>
+      <Image src={ParkHopLogo} size='medium' circular />
+
       <h3>Get started exploring parks all over Upstate SC.</h3>
       <p>Click the Parks tab to view a map of parks and get directions. Once you're at one of our parks, tap "Check In at Park" to start completing clues.</p>
       <button className='buttonStyle' onClick={()=>checkInAtPark()}>Check In at Park</button>
