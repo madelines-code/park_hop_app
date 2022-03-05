@@ -5,7 +5,7 @@ import axios from "axios";
 import { Centered } from "../components/StyledComponents";
 import Clue from "../components/Clue";
 import ParkHopLogo from "../2020_Park_Hop_Logo_Vector.svg"
-import { Image } from "semantic-ui-react";
+import { Button, Image } from "semantic-ui-react";
 
 
 const Home = () => {
@@ -48,6 +48,7 @@ const Home = () => {
       navigator.geolocation.getCurrentPosition(function(position) {
         console.log("Latitude is :", position.coords.latitude);
         console.log("Longitude is :", position.coords.longitude);
+        
       });
     } else {
       console.log("Not Available");
@@ -81,6 +82,11 @@ const Home = () => {
       <button className='buttonStyle' onClick={()=>checkInAtPark()}>Check In at Park</button>
       {park && <h2>{park.name} Clue</h2>}
       {park && <Clue park={park} parkClues={parkClues}/>} 
+      <div className='playdates'>
+        <h2>Park Hop Play Dates</h2>
+        <p>Join us on special days for playdates with games and fairy tale characters!</p>
+        <Button>Plan for Playdates</Button>
+      </div>
     </div>
   );
 };

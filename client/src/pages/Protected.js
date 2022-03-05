@@ -82,15 +82,17 @@ const editKidPage = (id) => {
       {auth && <>
       <h2>My Profile</h2>
       <div style={{display: 'flex', flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center'}}>
-        <div style={{alignSelf: "flex-start"}}>
+        <div style={{alignSelf: "flex-start", zIndex: "100" }}>
       <img
         src={auth.image}
         alt="profile image"
-        className="circletag"/>
+        className="circletag"
+        style={{border: '1px solid gray'}}/>
         </div>
-          <div style={{marginLeft: '20px'}}>
+      <div style={{marginLeft: '-70px', backgroundColor: 'white', padding: '30px 30px 30px 100px', zIndex: '2', borderRadius: '5px', color: 'black'}}>
         <h3>Hey, {auth.name}!</h3>
         <p>email: {auth.email}</p>
+        
         {/* <p>My ID {auth.id}</p> */}
         <button className='profileButtonStyle' onClick={()=>navigate(`/api/users/${auth.id}/edit`)} state = {{auth}} >Edit Profile</button>
         </div>
