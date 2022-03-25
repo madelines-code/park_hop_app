@@ -126,6 +126,7 @@ code {
 
 .playdates {
   display: flex;
+  flex-wrap: wrap;
   background-size: cover;
   width: 100rem;
   background-image: url("https://res.cloudinary.com/dkkwdvec2/image/upload/v1646493918/orange_overlay_sprinkler.jpg.jpg");
@@ -134,4 +135,12 @@ code {
   padding: 120px;
   text-align: center;
   line-height: 5px;
+}
+
+.playdatesTextBox {
+  background-color: lightgray;
+  border-radius: 5px;
+  color: rgb(24, 24, 24);
+  padding: 5rem 10rem;
+  align-self: center;
 }

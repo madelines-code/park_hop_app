@@ -83,9 +83,11 @@ const Home = () => {
       {park && <h2>{park.name} Clue</h2>}
       {park && <Clue park={park} parkClues={parkClues}/>} 
       <div className='playdates'>
+        <div className='playdatesTextBox'>
         <h2>Park Hop Play Dates</h2>
         <p>Join us on special days for playdates with games and fairy tale characters!</p>
         <Button>Plan for Playdates</Button>
+        </div>
       </div>
     </div>
   );
