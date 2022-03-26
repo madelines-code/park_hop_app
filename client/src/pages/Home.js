@@ -47,17 +47,16 @@ const Home = () => {
       console.log("Available");
       navigator.geolocation.getCurrentPosition(function(position) {
         console.log("Latitude is :", position.coords.latitude);
-        console.log("Longitude is :", position.coords.longitude);
-        
-      });
+        console.log("Longitude is :", position.coords.longitude);})
+        if (parks.length) {
+        let parkLocation = Math.floor(Math.random() * parks.length);
+        setPark(parks[parkLocation]);
+        };
     } else {
       console.log("Not Available");
     }
-    // if (parks.length) {
-    // let parkLocation = Math.floor(Math.random() * parks.length);
-    // setPark(parks[parkLocation]);
     
-    return null;
+    // return null;
   }
 
   // let park = checkInAtPark();
