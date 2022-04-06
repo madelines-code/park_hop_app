@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2022_02_21_155539) do
   create_table "clues", force: :cascade do |t|
     t.text "question"
     t.text "answer"
+    t.string "status"
     t.bigint "park_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -48,7 +49,7 @@ ActiveRecord::Schema.define(version: 2022_02_21_155539) do
     t.bigint "clue_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "myanswer"
+    t.string "myanswer", default: ""
     t.index ["clue_id"], name: "index_userclues_on_clue_id"
     t.index ["user_id"], name: "index_userclues_on_user_id"
   end

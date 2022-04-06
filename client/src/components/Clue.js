@@ -20,23 +20,24 @@ useEffect(()=>{
 
 useEffect(()=>{
   setClue(randomClue())
-  // console.log(clue)
+  console.log(clue)
 }, [clues])
 
 const getClues = () => {
   console.log(parkClues.parkClues)
   setClues(parkClues.parkClues)
-  
 }
 
 
   const handleSubmit = async (id) => {
     try {
-      let clueData = {myanswer, completed:true, id}
+      console.log('id', id)
+      let clueData = {myanswer, completed:true, clue_id: id}
+      console.log('cluedata', clueData)
       await axios.put(`/api/userclues/${id}`, clueData)
       console.log(clues)
-      const filteredClues = clues.filter((clue)=> clue.completed !== true )
-      console.log(filteredClues)
+      const filteredClues = clues.filter((clue)=> clue.id !== id  )
+      console.log('remaining clues', filteredClues)
       setClues(filteredClues)
       setMyanswer("")
     } catch(err){
@@ -55,31 +56,32 @@ const getClues = () => {
 
 
   const renderClue = () => {
-    // let clue = randomClue();
+    let clue = randomClue();
     console.log(clue)
     if (!clue) {
       return <p>Park complete!</p>
     }
-    return (
-      <Form >
+    
+  }
+
+  return (
+    <div>
+     {clue &&       
+     <Form >
         <Form.Field>
         <label>{clue.question}</label>
-        <input key = {clue.clue_id} value={myanswer} onChange = {(e) => {
-          setMyanswer(e.target.value)
-        }} placeholder="Enter answer here"/>
+        <input key = {clue.clue_id} value={myanswer} 
+        onChange = {(e) => {setMyanswer(e.target.value)}} 
+        // onChange={(e) => { setAbout(e.target.value); }}
+        placeholder="Enter answer here"/>
         </Form.Field>
         
         
         <br/>
         {/* <button onClick = {()=>handleSubmit(clue.clue_id)}>submit</button> */}
         <Button onClick = {()=>handleSubmit(clue.clue_id)}>Button</Button>
-      </Form>
-    )
-  }
-
-  return (
-    <div>
-     {renderClue()}
+      </Form>}
+      {!clue && <p>"Park Complete!"</p>}
     </div>
   )
 }

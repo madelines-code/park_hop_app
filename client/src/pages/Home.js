@@ -30,10 +30,12 @@ const Home = () => {
   }, [park])
 
   const getData = async ()=>{
+    console.log(auth.id)
     try{
       // NOTE: access-token is getting sent here (devise-axios)
       let resClues = await axios.get(`/api/userclues/${auth.id}`)
       setClues(resClues.data);
+      console.log("clues",resClues)
       let resParks = await axios.get('/api/parks')
       setParks(resParks.data);
     } catch(err){
@@ -52,6 +54,7 @@ const Home = () => {
         let parkLocation = Math.floor(Math.random() * parks.length);
         setPark(parks[parkLocation]);
         };
+        listParkClues()
     } else {
       console.log("Not Available");
     }
