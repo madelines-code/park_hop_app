@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Navigate } from "react-router";
 
 export const AuthContext = React.createContext();
 export const AuthConsumer = AuthContext.Consumer;
 
 const AuthProvider = (props) => {
   const [user, setUser] = useState(null);
+
 
   const handleRegister = async (user, navigate) => {
     try {
@@ -17,7 +17,6 @@ const AuthProvider = (props) => {
       } catch (err) { console.log(err.response);
         alert("error registering user");
     }
-
   };
 
   const handleEdit = async (editedUser, navigate) => {

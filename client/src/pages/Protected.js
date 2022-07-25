@@ -5,6 +5,7 @@ import { AuthContext } from "../providers/AuthProvider";
 import axios from "axios";
 import EditUser from "./EditUser";
 import { Button, Card, Icon, Image } from 'semantic-ui-react'
+import Modal2022 from "../components/Modal2022";
 
 const Protected = () => {
   const auth = useContext(AuthContext);
@@ -80,6 +81,7 @@ const editKidPage = (id) => {
         
     <div className='homepage'>
       {auth && <>
+          <Modal2022 user={auth.id}/>
       <h2>My Profile</h2>
       <div style={{display: 'flex', flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center'}}>
         <div style={{alignSelf: "flex-start", zIndex: "100" }}>

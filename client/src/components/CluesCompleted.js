@@ -3,6 +3,7 @@ import { Container, Grid } from "semantic-ui-react";
 import _ from 'lodash'
 import axios from "axios";
 import { AuthContext } from "../providers/AuthProvider";
+import Modal2022 from "./Modal2022";
 
 
 const CluesCompleted = () => {
@@ -66,6 +67,7 @@ const CluesCompleted = () => {
     return (clues.map((c)=>{
       return (
         <div key={c.clue_id}>
+          <p>clue: {c.clue_id}</p>
           <p>Q: {c.question}</p>
           <p>A: {c.myanswer}</p>
         </div>

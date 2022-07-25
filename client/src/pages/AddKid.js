@@ -33,6 +33,7 @@ const AddKid = () => {
 
 
   const getData = async () => {
+    console.log(params.id);
     let res = await axios.get(`/api/users/${params.id}`)
     setUserId(res.data.id)
   }

@@ -36,15 +36,14 @@ const getClues = () => {
       console.log('cluedata', clueData)
       await axios.put(`/api/userclues/${id}`, clueData)
       console.log(clues)
-      const filteredClues = clues.filter((clue)=> clue.id !== id  )
+      const filteredClues = clues.filter((clue)=> clue.clue_id !== id)
       console.log('remaining clues', filteredClues)
       setClues(filteredClues)
+      setClue(randomClue())
       setMyanswer("")
     } catch(err){
       alert ('err in submit');
     }
-
-
   }
 
   const randomClue = () => {
@@ -66,6 +65,7 @@ const getClues = () => {
 
   return (
     <div>
+     {!clue && <p>"Park Complete!"</p>}
      {clue &&       
      <Form >
         <Form.Field>
@@ -81,7 +81,6 @@ const getClues = () => {
         {/* <button onClick = {()=>handleSubmit(clue.clue_id)}>submit</button> */}
         <Button onClick = {()=>handleSubmit(clue.clue_id)}>Button</Button>
       </Form>}
-      {!clue && <p>"Park Complete!"</p>}
     </div>
   )
 }
