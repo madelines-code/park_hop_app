@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_21_155539) do
+ActiveRecord::Schema.define(version: 2022_07_26_121702) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 2022_02_21_155539) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "myanswer", default: ""
+    t.integer "year"
     t.index ["clue_id"], name: "index_userclues_on_clue_id"
     t.index ["user_id"], name: "index_userclues_on_user_id"
   end

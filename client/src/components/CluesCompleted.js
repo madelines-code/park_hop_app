@@ -18,11 +18,27 @@ const CluesCompleted = () => {
   const getData = async () => {
     let resClues = await axios.get(`/api/userclues/${auth.id}`);
     console.log(resClues.data)
+    // let yearClues = resClues.data.filter(c=> {
+    //   console.log(c)
+    //   if(c.year === 2022 ){
+    //     return c 
+    //   }
+    //   // console.log(yearClues)
+    // })
     setClues(resClues.data)
     let resClueQuestions = await axios.get('/api/clues');
     setClueQuestions(resClueQuestions.data)
   };
 
+  const filterCluesByYear = () => {
+    let yearClues = clues.filter(c=> {
+      if(c.year === 2022 ){
+        return c 
+      }
+      console.log(yearClues)
+    })
+    return yearClues
+  }
 
   const renderClues = () => {
     return clues.map((clue) => {
@@ -37,11 +53,14 @@ const CluesCompleted = () => {
   const normalizeQuestions = () => {
     let normalizedQuestions = clueQuestions.map((clue) => {
       let clueid = clue.id 
+      let clueYear = clue.year
       console.log("clueId", clueid)
       console.log("clues",clues)
+      console.log("clue year",clueYear)
       let clueAnswerObj = clues.filter((c)=> c.ogclueid === clueid)
       console.log("clueanswerObj", clueAnswerObj)
-      if (clueAnswerObj[0].myanswer === null) {
+      if (clueAnswerObj[0].myanswer === null ) 
+        {
         let normalizedQuestion = { key: clue.id, question: clue.question, myAnswer:"unanswered" }
         console.log(normalizedQuestion)
         return (
@@ -68,6 +87,7 @@ const CluesCompleted = () => {
       return (
         <div key={c.clue_id}>
           <p>clue: {c.clue_id}</p>
+          <p>year: {c.year}</p>
           <p>Q: {c.question}</p>
           <p>A: {c.myanswer}</p>
         </div>
@@ -79,7 +99,7 @@ const CluesCompleted = () => {
     <>
       <h1>Progress</h1>
       <div className='progressBox'>
-    {renderClues()}
+        {renderClues()}
       </div>
       <div>
         {renderMyAnswers()}

@@ -40,10 +40,10 @@ c9 = Clue.create(park_id: p5.id, question: 'There are 10 of us. I will help you 
   user = User.create(email: 'test@test.com', password: "moneybrain", name: "Martha", image: 'https://robohash.org/voluptateseaut.png?size=300x300&set=set1')
   
  # each user will have a clue
-  9.times do |i|
-   Userclue.create(user_id: user.id, clue_id: i, completed: false)
-  end
+#   9.times do |i|
+#    Userclue.create(user_id: user.id, clue_id: i, completed: false)
+#   end
  end
 
-puts "user clue SIZE: #{Userclue.all.length}"
+# puts "user clue SIZE: #{Userclue.all.length}"
 puts "user SIZE: #{User.all.length}"

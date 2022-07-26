@@ -38,7 +38,7 @@ class Api::UsercluesController < ApplicationController
     end
 
     def userclue_params
-      params.require(:userclue).permit(:myanswer, :completed, :user_id, :clue_id)
+      params.require(:userclue).permit(:myanswer, :completed, :user_id, :clue_id, :year)
     end
 
 end
