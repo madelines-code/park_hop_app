@@ -39,7 +39,7 @@ class Api::ParksController < ApplicationController
       end
   
       def park_params
-        params.require(:park).permit(:name, :geolocation)
+        params.require(:park).permit(:name, :latitude, :longitude)
       end
 
   

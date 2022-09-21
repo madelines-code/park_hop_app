@@ -15,8 +15,8 @@ code {
 .homepage {
   background-color: rgb(0, 168, 0) !important;
   color: white;
-  height: 100%;
-  margin: auto;
+  height: 100rem;
+  /* margin: auto; */
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -25,10 +25,10 @@ code {
 .background {
   background-color: rgb(0, 168, 0) !important;
   color: white;
-  height: 100vh;
+  height: 100rem;
   margin: auto;
   display: flex;
-  align-items: center;
+  justify-content: center;
   flex-direction: column;
 }
 
@@ -37,9 +37,19 @@ code {
   border: none;
   border-radius: 10px;
   padding: 15px;
-  width: 300px;
+  width: 200px;
   font-size: 20px;
   margin: 25px;
+}
+
+.profileButtonStyle {
+  background-color: rgb(221, 147, 9);
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  width: 150px;
+  font-size: 15px;
+
 }
 
 .buttonContainer {
@@ -55,7 +65,7 @@ code {
   display: flex;
   align-items: center;
   flex-direction: column;
-  margin: 10px;
+  /* margin: 10px; */
 }
 
 .progressBox {
@@ -102,4 +112,38 @@ code {
   text-align: center;
   padding: 5px;
   border: solid 1px black;
+}
+
+.circletag {
+  display: block;
+  width: 15em;
+  height: 15em;
+  background: #f1f3ff;
+  object-fit: cover;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+}
+
+.playdates {
+  display: flex;
+  flex-wrap: wrap;
+  background-size: cover;
+  width: 100vw;
+  background-image: url("https://res.cloudinary.com/dkkwdvec2/image/upload/v1646493918/orange_overlay_sprinkler.jpg.jpg");
+  justify-content: center;
+  flex-direction: column;
+  padding: 120px;
+  text-align: center;
+  line-height: 5px;
+  margin: 30px 0px 0px 0px;
+}
+
+.playdatesTextBox {
+  background-color: lightgray;
+  border-radius: 5px;
+  color: rgb(24, 24, 24);
+  padding: 5rem 10rem;
+  align-self: center;
+  margin: 0;
+  width: 100%;
 }

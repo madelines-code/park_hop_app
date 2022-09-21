@@ -3,6 +3,9 @@ class Api::CluesController < ApplicationController
   # check if token is valid
   before_action :authenticate_user!
 
-
+  def index
+    clues = Clue.all
+    render json: clues
+  end
 
 end

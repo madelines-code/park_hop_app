@@ -102,7 +102,7 @@ const EditUser= () => {
         value={email} 
         onChange={(e)=>{setEmail(e.target.value);}}/>
         <p>Current Image</p>
-        <img src={image}/>
+        <img src={image} style={{width: '200px'}}/>
           <h1>only 1 photo and don't do api call on change</h1>
           <FilePond
               files={files}

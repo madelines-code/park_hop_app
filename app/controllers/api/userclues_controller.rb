@@ -7,6 +7,15 @@ class Api::UsercluesController < ApplicationController
     render json: userclues
   end
 
+  def create
+    @userclue = Userclue.new(userclue_params)
+    if (@userclue.save)
+      render json: @userclue
+    else
+      render json: { error: @userclue.errors }, status: 422
+    end
+  end
+
   def myclues
     render json: Userclue.my_userclues(params[:id])
   end
@@ -29,7 +38,7 @@ class Api::UsercluesController < ApplicationController
     end
 
     def userclue_params
-      params.require(:userclue).permit(:myanswer, :completed, :user_id)
+      params.require(:userclue).permit(:myanswer, :completed, :user_id, :clue_id, :year)
     end
 
 end

@@ -20,11 +20,11 @@
 
 
 
-p1 = Park.create(name: 'Leroy Mathis Park', geolocation: '35.1019421784494, -82.1024914911515')
-p2 = Park.create(name: 'Cleveland Park', geolocation: '34.96594230909251, -81.95060422934635')
-p3 = Park.create(name: 'Tyger River Park', geolocation: '34.872637711342875, -82.10831128867699')
-p4 = Park.create(name: 'Pavilion Recreation Complex', geolocation: '34.88510310155655, -82.30094502934814')
-p5 = Park.create(name: 'Simpsonville City Park', geolocation: '34.73940510833818, -82.25118974653981')
+p1 = Park.create(name: 'Leroy Mathis Park', latitude: '35.1019421784494', longitude: '-82.1024914911515')
+p2 = Park.create(name: 'Cleveland Park', latitude: '34.96594230909251',  longitude: '-81.95060422934635')
+p3 = Park.create(name: 'Tyger River Park', latitude: '34.872637711342875', longitude: '-82.10831128867699')
+p4 = Park.create(name: 'Pavilion Recreation Complex',  latitude: '34.88510310155655', longitude: '-82.30094502934814')
+p5 = Park.create(name: 'Simpsonville City Park', latitude: '34.73940510833818', longitude: '-82.25118974653981')
 
 c1 = Clue.create(park_id: p1.id, question: 'What color stripes are on the slide?', answer: 'blue, red, green' , status: 'unanswered')
 c2 = Clue.create(park_id: p1.id, question: 'What is written on the corn hole boards?', answer: 'be a star' , status: 'unanswered')
@@ -37,13 +37,13 @@ c8 = Clue.create(park_id: p4.id, question: 'On the small playground, find the mu
 c9 = Clue.create(park_id: p5.id, question: 'There are 10 of us. I will help you balance walk along the path. Which one am I?', answer: 'stepping stone' , status: 'unanswered')
 
 5.times do
-  user = User.create(email: 'test@test.com', password: "moneybrain", name: Martha, image: 'https://robohash.org/voluptateseaut.png?size=300x300&set=set1')
+  user = User.create(email: 'test@test.com', password: "moneybrain", name: "Martha", image: 'https://robohash.org/voluptateseaut.png?size=300x300&set=set1')
   
  # each user will have a clue
-  9.times do |i|
-   Userclue.create(user_id: user.id, clue_id: i, completed: false)
-  end
+#   9.times do |i|
+#    Userclue.create(user_id: user.id, clue_id: i, completed: false)
+#   end
  end
 
-puts "user clue SIZE: #{Userclue.all.length}"
+# puts "user clue SIZE: #{Userclue.all.length}"
 puts "user SIZE: #{User.all.length}"

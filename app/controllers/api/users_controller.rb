@@ -3,7 +3,6 @@ class Api::UsersController < ApplicationController
     before_action :set_user, only: [:show, :update, :destroy]
     before_action :authenticate_user!, except: [:index, :search, :show]
 
-
   def index
     other_users = User.all
     render json: other_users
@@ -64,5 +63,6 @@ class Api::UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:email, :password, :name, :image, :kids, :id, :file )
     end
+
 
 end

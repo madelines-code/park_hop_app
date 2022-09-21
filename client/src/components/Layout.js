@@ -37,12 +37,12 @@ const Layout = () => {
           <Link style={styles.navbarText} to="/">Home</Link>
         </div>
         <div>
-          <Link style={styles.navbarText} to="/protected">Protected</Link>
+          <Link style={styles.navbarText} to="/protected">Profile</Link>
         </div>
 
         {renderAuthLinks()}
       </div>
-      <div className="background">
+      <div style={styles.background}>
         <Outlet />
       </div>
     </div>
@@ -75,6 +75,10 @@ const styles={
       border: '0px',
       backgroundColor: 'rgb(237, 142, 0)',
       fontSize: '20px',
+    },
+    background: {
+      backgroundColor: 'rgb(0, 168, 0)',
+      height: '100%',
     },
 };
 
