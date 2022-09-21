@@ -1,13 +1,10 @@
 import Home from './pages/Home';
-import Navbar from './components/Navbar';
 import Login from './components/Login';
 import Register from './components/Register';
 import Protected from './pages/Protected';
 import { Route, Routes} from 'react-router-dom';
-import { Container, } from "semantic-ui-react";
 import RequireAuth from './components/RequireAuth';
 import Layout from './components/Layout';
-import AuthProvider from './providers/AuthProvider';
 import EditUser from './pages/EditUser';
 import Parks from './pages/Parks';
 import AddKid from './pages/AddKid';

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Button, Modal } from 'semantic-ui-react'
 import axios from "axios";
 import { useNavigate } from "react-router";

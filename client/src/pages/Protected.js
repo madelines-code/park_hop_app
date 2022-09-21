@@ -3,9 +3,8 @@ import { useNavigate } from "react-router";
 import CluesCompleted from "../components/CluesCompleted";
 import { AuthContext } from "../providers/AuthProvider";
 import axios from "axios";
-import EditUser from "./EditUser";
 import { Button, Card, Icon, Image } from 'semantic-ui-react'
-import Modal2022 from "../components/Modal2022";
+// import Modal2022 from "../components/Modal2022";
 
 const Protected = () => {
   const auth = useContext(AuthContext);
@@ -81,9 +80,9 @@ const editKidPage = (id) => {
     <div className='homepage'>
       {auth && <>
       
-      { userclues[0] === undefined &&
+      {/* { userclues[0] === undefined &&
         <Modal2022 user={auth.id}/>
-      }
+      } */}
           
       <h2>My Profile</h2>
       <div style={{display: 'flex', flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center'}}>
