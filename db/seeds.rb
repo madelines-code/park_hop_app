@@ -20,11 +20,11 @@
 
 
 
-p1 = Park.create(name: 'Leroy Mathis Park', geolocation: '35.1019421784494, -82.1024914911515')
-p2 = Park.create(name: 'Cleveland Park', geolocation: '34.96594230909251, -81.95060422934635')
-p3 = Park.create(name: 'Tyger River Park', geolocation: '34.872637711342875, -82.10831128867699')
-p4 = Park.create(name: 'Pavilion Recreation Complex', geolocation: '34.88510310155655, -82.30094502934814')
-p5 = Park.create(name: 'Simpsonville City Park', geolocation: '34.73940510833818, -82.25118974653981')
+p1 = Park.create(name: 'Leroy Mathis Park', latitude: '35.1019421784494', longitude: '-82.1024914911515')
+p2 = Park.create(name: 'Cleveland Park', latitude: '34.96594230909251',  longitude: '-81.95060422934635')
+p3 = Park.create(name: 'Tyger River Park', latitude: '34.872637711342875', longitude: '-82.10831128867699')
+p4 = Park.create(name: 'Pavilion Recreation Complex',  latitude: '34.88510310155655', longitude: '-82.30094502934814')
+p5 = Park.create(name: 'Simpsonville City Park', latitude: '34.73940510833818', longitude: '-82.25118974653981')
 
 c1 = Clue.create(park_id: p1.id, question: 'What color stripes are on the slide?', answer: 'blue, red, green' , status: 'unanswered')
 c2 = Clue.create(park_id: p1.id, question: 'What is written on the corn hole boards?', answer: 'be a star' , status: 'unanswered')

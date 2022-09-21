@@ -2,7 +2,6 @@ import React, {useContext, useEffect, useState} from "react";
 import { useNavigate, useParams } from "react-router";
 import { AuthContext } from "../providers/AuthProvider";
 import axios from "axios";
-import ReactDOM from 'react-dom';
 import Bunny from "../Bunny.svg"
 import Cat from "../Cat.svg"
 import Dog from "../Dog.svg"

@@ -51,17 +51,7 @@ const getClues = () => {
     if (clues.length) {
       const index = Math.floor(Math.random() * clues.length);
       return clues[index];
-    }}
-
-
-  const renderClue = () => {
-    let clue = randomClue();
-    console.log(clue)
-    if (!clue) {
-      return <p>Park complete!</p>
-    }
-    
-  }
+    }};
 
   return (
     <div>
@@ -72,14 +62,12 @@ const getClues = () => {
         <label>{clue.question}</label>
         <input key = {clue.clue_id} value={myanswer} 
         onChange = {(e) => {setMyanswer(e.target.value)}} 
-        // onChange={(e) => { setAbout(e.target.value); }}
         placeholder="Enter answer here"/>
         </Form.Field>
         
         
         <br/>
-        {/* <button onClick = {()=>handleSubmit(clue.clue_id)}>submit</button> */}
-        <Button onClick = {()=>handleSubmit(clue.clue_id)}>Button</Button>
+        <Button onClick = {()=>handleSubmit(clue.clue_id)}>Submit</Button>
       </Form>}
     </div>
   )

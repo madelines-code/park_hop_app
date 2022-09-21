@@ -1,9 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Container, Grid } from "semantic-ui-react";
 import _ from 'lodash'
 import axios from "axios";
 import { AuthContext } from "../providers/AuthProvider";
-import Modal2022 from "./Modal2022";
 
 
 const CluesCompleted = () => {

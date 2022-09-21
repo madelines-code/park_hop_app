@@ -6,8 +6,8 @@ import { AuthContext } from "../providers/AuthProvider";
 const Login = () => {
 
   const {handleLogin} = useContext(AuthContext);
-  const [email, setEmail] = useState('test@test.com')
-  const [password, setPassword] = useState('moneybrain')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
   const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -24,11 +24,13 @@ const Login = () => {
             <Input 
             value={email} 
             style={{ width:"250px"}}
+            placeholder={"Email"}
             onChange={(e)=>{setEmail(e.target.value);}}/>
             <p>Password</p>
             <Input 
             value={password} 
             style={{ width:"250px"}}
+            placeholder={"Password"}
             type='password'
             onChange={(e)=>{setPassword(e.target.value);}}/>
             <br/>
