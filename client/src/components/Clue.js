@@ -67,6 +67,10 @@ const getClues = () => {
         placeholder="Enter answer here"/>
         </Form.Field>
         <br/>
+<<<<<<< HEAD
+        {/* <button onClick = {()=>handleSubmit(clue.clue_id)}>submit</button> */}
+=======
+>>>>>>> 7d297494a4d0a8600edc5f23ebb25279dab4018c
         <Button onClick = {()=>handleSubmit(clue.clue_id)}>Button</Button>
       </Form>
       }
