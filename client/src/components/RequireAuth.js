@@ -42,7 +42,8 @@ if(checkingAuthStatus){
 
   // here we are authenticated
   return (
-    <div >
+
+    <div>
       <Outlet />
     </div>
   );

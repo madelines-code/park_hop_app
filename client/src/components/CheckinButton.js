@@ -71,6 +71,8 @@ const listParkClues = () => {
       <button className='buttonStyle' onClick={()=>checkInAtPark()}>Check In at Park</button>
       {park && <h2>You are at {park.name}</h2>}
       {parkClues.length > 0 && renderClue()}
+      {JSON.stringify({parkClues})}
+
      </div>
   );
 
