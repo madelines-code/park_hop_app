@@ -108,6 +108,10 @@ const editKidPage = (id) => {
         <Card.Group style= {{display: 'flex', flexWrap: 'wrap', alignContent: 'center', alignItems: 'centered', justifyContent: 'center'}}> {kids !== {} && renderKids()}</Card.Group> 
       <button className='buttonStyle' onClick={()=>navigate(`/api/users/${auth.id}/add_kid`)} state = {{auth}} >Add Kid</button>    
       </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 7d297494a4d0a8600edc5f23ebb25279dab4018c
 </> }
     </div>      
   );
