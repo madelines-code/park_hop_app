@@ -3,8 +3,7 @@ import { useNavigate } from "react-router";
 import CluesCompleted from "../components/CluesCompleted";
 import { AuthContext } from "../providers/AuthProvider";
 import axios from "axios";
-import EditUser from "./EditUser";
-import { Button, Card, Icon, Image } from 'semantic-ui-react'
+import { Button, Card, Icon, Image, Modal } from 'semantic-ui-react'
 import Modal2022 from "../components/Modal2022";
 
 const Protected = () => {
@@ -23,6 +22,7 @@ const Protected = () => {
       // NOTE: access-token is getting sent here (devise-axios)
       let res = await axios.get(`/api/userclues/${auth.id}`)
       setUserclues(res.data);
+      console.log(res.data);
       let res_kids = await axios.get(`/api/users/${auth.id}/user_kids`);
       setKids(res_kids.data)
     } catch(err){
@@ -103,11 +103,14 @@ const editKidPage = (id) => {
         </div>
         </div>
       <CluesCompleted/>
+      <div>
         <h3>Kids</h3>
         <Card.Group style= {{display: 'flex', flexWrap: 'wrap', alignContent: 'center', alignItems: 'centered', justifyContent: 'center'}}> {kids !== {} && renderKids()}</Card.Group> 
+
       <div>
       <button className='buttonStyle' onClick={()=>navigate(`/api/users/${auth.id}/add_kid`)} state = {{auth}} >Add Kid</button>    
       </div>
+
 </> }
     </div>      
   );

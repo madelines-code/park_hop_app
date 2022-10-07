@@ -55,6 +55,7 @@ const getClues = () => {
 
   return (
     <div>
+      
      {!clue && <p>"Park Complete!"</p>}
      {clue &&       
      <Form >
@@ -62,10 +63,9 @@ const getClues = () => {
         <label>{clue.question}</label>
         <input key = {clue.clue_id} value={myanswer} 
         onChange = {(e) => {setMyanswer(e.target.value)}} 
+        // onChange={(e) => { setAbout(e.target.value); }}
         placeholder="Enter answer here"/>
         </Form.Field>
-        
-        
         <br/>
         <Button onClick = {()=>handleSubmit(clue.clue_id)}>Button</Button>
       </Form>

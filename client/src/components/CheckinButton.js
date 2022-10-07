@@ -53,7 +53,7 @@ const listParkClues = () => {
     return <p>no clues yet, please refresh</p>
   }
   console.log(clues)
-  setParkClues(clues.filter((c)=> c.park_id === park.id && c.completed === false));
+  setParkClues(clues.filter((c)=> c.park_id === park.id && c.completed === false))
   return parkClues;
   }
 
@@ -72,6 +72,7 @@ const listParkClues = () => {
       {park && <h2>You are at {park.name}</h2>}
       {parkClues.length > 0 && renderClue()}
       {JSON.stringify({parkClues})}
+
      </div>
   );
 

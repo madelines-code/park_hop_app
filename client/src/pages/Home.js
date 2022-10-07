@@ -23,6 +23,7 @@ const Home = () => {
     getData()
   }, [])
 
+
   // useEffect(()=>{
   //   listParkClues(park)
   //   console.log(parkClues);
@@ -44,6 +45,7 @@ const Home = () => {
     }
   }
 
+
   // const within9Km = () => {
   //   parks.map((p) => {
   //     console.log(p.latitude);
@@ -59,6 +61,7 @@ const Home = () => {
   //   })
 
   // }
+
   const getLocation = () => {
     if (!navigator.geolocation) {
       setStatus('Geolocation is not supported by your browser');
@@ -74,6 +77,7 @@ const Home = () => {
       });
     }
   }
+
   
   // const checkInAtPark = () => {
       
@@ -96,6 +100,7 @@ const Home = () => {
   //   setParkClues(clues.filter((c)=> c.park_id === park.id && c.completed === false))
   //   }
 
+
   return (
     <div className='form'>
       <h2 style={{margin: '20px'}}>Welcome to Park Hop!</h2>
@@ -103,10 +108,12 @@ const Home = () => {
 
       <h3>Get started exploring parks all over Upstate SC.</h3>
       <p>Click the Parks tab to view a map of parks and get directions. Once you're at one of our parks, tap "Check In at Park" to start completing clues.</p>
+
       {/* {lat && <button className='buttonStyle' onClick={()=>checkInAtPark()}>Check In at Park</button>}
       {park && <h2>You are at {park.name}</h2>}
       {park && <Clue park={park} parkClues={parkClues}/>}  */}
       {lat && <CheckinButton parks = {parks} lat = {lat} lng = {lng} clues = {clues}/>}
+
       <div className='playdates'>
         <div className='playdatesTextBox'>
         <h2>Park Hop Play Dates</h2>
