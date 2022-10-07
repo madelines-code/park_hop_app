@@ -94,7 +94,7 @@ const CluesCompleted = () => {
   }
   
   return (
-    <>
+    <div>
       <h1>Progress</h1>
       <div className='progressBox'>
         {renderClues()}
@@ -102,7 +102,7 @@ const CluesCompleted = () => {
       <div>
         {renderMyAnswers()}
       </div>
-    </>
+    </div>
   );
 };
 

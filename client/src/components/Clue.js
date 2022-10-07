@@ -51,7 +51,7 @@ const getClues = () => {
     if (clues.length) {
       const index = Math.floor(Math.random() * clues.length);
       return clues[index];
-    }};
+    }}
 
   return (
     <div>
@@ -67,8 +67,9 @@ const getClues = () => {
         
         
         <br/>
-        <Button onClick = {()=>handleSubmit(clue.clue_id)}>Submit</Button>
-      </Form>}
+        <Button onClick = {()=>handleSubmit(clue.clue_id)}>Button</Button>
+      </Form>
+      }
     </div>
   )
 }
