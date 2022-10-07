@@ -10,10 +10,6 @@ function Modal2022(params) {
   const user = params.user
   const navigate = useNavigate();
 
-  // const get2022Clues = () => {
-
-  // }
-
   const generateClues = async (e) => {
     console.log(user);
     let userClue1 = { clue_id: 1, user_id: user, completed: false, year: 2022}

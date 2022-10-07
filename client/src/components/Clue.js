@@ -51,7 +51,7 @@ const getClues = () => {
     if (clues.length) {
       const index = Math.floor(Math.random() * clues.length);
       return clues[index];
-    }};
+    }}
 
   return (
     <div>
@@ -64,11 +64,11 @@ const getClues = () => {
         onChange = {(e) => {setMyanswer(e.target.value)}} 
         placeholder="Enter answer here"/>
         </Form.Field>
-        
-        
         <br/>
-        <Button onClick = {()=>handleSubmit(clue.clue_id)}>Submit</Button>
-      </Form>}
+        {/* <button onClick = {()=>handleSubmit(clue.clue_id)}>submit</button> */}
+        <Button onClick = {()=>handleSubmit(clue.clue_id)}>Button</Button>
+      </Form>
+      }
     </div>
   )
 }
