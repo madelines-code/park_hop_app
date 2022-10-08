@@ -81,9 +81,9 @@ const editKidPage = (id) => {
     <div className='homepage'>
       {auth && <>
       
-      { userclues[0] === undefined &&
+      {/* { userclues[0] === undefined &&
         <Modal2022 user={auth.id}/>
-      }
+      } */}
           
       <h2>My Profile</h2>
       <div style={{display: 'flex', flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center'}}>
