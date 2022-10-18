@@ -4,26 +4,17 @@ import axios from "axios";
 import { AuthContext } from "../providers/AuthProvider";
 
 
-const CluesCompleted = () => {
-  const [clues, setClues] = useState([]);
+const CluesCompleted = (props) => {
+  // const [clues, setClues] = useState([]);
   const [clueQuestions, setClueQuestions] = useState([]);
+  const clues = props.clues;
   const auth = useContext(AuthContext);
 
     useEffect(() => {
     getData();
-  }, []);
+  }, [clues]);
 
   const getData = async () => {
-    let resClues = await axios.get(`/api/userclues/${auth.id}`);
-    console.log(resClues.data)
-    // let yearClues = resClues.data.filter(c=> {
-    //   console.log(c)
-    //   if(c.year === 2022 ){
-    //     return c 
-    //   }
-    //   // console.log(yearClues)
-    // })
-    setClues(resClues.data)
     let resClueQuestions = await axios.get('/api/clues');
     setClueQuestions(resClueQuestions.data)
   };

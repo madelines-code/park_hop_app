@@ -9,6 +9,8 @@ function Modal2022(params) {
   const [show, setShow] = useState(true);
   const user = params.user
   const navigate = useNavigate();
+  const clues = params.clues;
+  const setClues = params.setClues;
 
   const generateClues = async (e) => {
     console.log(user);
@@ -35,9 +37,9 @@ function Modal2022(params) {
       let res7 = await axios.post(`/api/userclues`, userClue7);
       let res8 = await axios.post(`/api/userclues`, userClue8);
       let res9 = await axios.post(`/api/userclues`, userClue9)
-      console.log(res1)
-      console.log(res2)
-      console.log(res3)
+      let res = await axios.get(`/api/userclues/${user}`)
+      setClues(res.data);
+      console.log(res.data);
     } catch (err) {
       console.log(err);
       console.log(err.response);
@@ -48,7 +50,7 @@ function Modal2022(params) {
   const handleClick = () => {
     generateClues();
     setShow(false);
-    navigate('/');
+    navigate('/protected');
   }
 
   return (

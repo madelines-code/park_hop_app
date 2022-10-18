@@ -20,7 +20,6 @@ useEffect(()=>{
 
 useEffect(()=>{
   setClue(randomClue())
-  console.log(clue)
 }, [clues])
 
 const getClues = () => {

@@ -14,19 +14,20 @@ const Home = () => {
   const [clues, setClues] = useState([]);
   const [parks, setParks] = useState([]);
   // const [parkClues, setParkClues] = useState([])
-  // const [park, setPark] = useState("");
+  // const [park, setPark] = useState();
   const [lat, setLat] = useState(null);
   const [lng, setLng] = useState(null);
   const [status, setStatus] = useState(null);
 
   useEffect(()=>{
     getData()
+    console.log("clues home useeffect")
   }, [])
 
 
   // useEffect(()=>{
-  //   listParkClues(park)
-  //   console.log(parkClues);
+  //   // listParkClues(park)
+  //   console.log(park);
   // }, [park])
 
   const getData = async ()=>{
@@ -78,27 +79,6 @@ const Home = () => {
     }
   }
 
-  
-  // const checkInAtPark = () => {
-      
-  //   if (parks.length) {
-  //         within9Km()
-  //       // let parkLocation = Math.floor(Math.random() * parks.length);
-  //       // setPark(parks[parkLocation]);
-  //   } else {
-  //     alert("Error loading park data.")
-  //   }
-  // }
-
-
-  // const listParkClues = () => {
-  //   console.log(park);
-  //   if(!park) {
-  //     return <p>couldn't find a park</p>
-  //   }
-  //   console.log(clues)
-  //   setParkClues(clues.filter((c)=> c.park_id === park.id && c.completed === false))
-  //   }
 
 
   return (

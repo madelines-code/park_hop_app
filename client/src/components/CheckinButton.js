@@ -4,19 +4,30 @@ import Clue from "./Clue";
 
 
 const CheckinButton = (props) => {
-
-  const [park, setPark] = useState(null);
+  const [park, setPark] = useState("");
   const [parkClues, setParkClues] = useState([]);
+  const clues = props.clues;
   const parks = props.parks;
   const lat = props.lat;
   const lng = props.lng;
-  const clues = props.clues;
 
   useEffect(()=>{
-    listParkClues(park)
-    console.log(parkClues);
     console.log(parks)
+    console.log(clues)
+  }, [])
+
+  useEffect(()=>{
+    if (park !== null) {
+      console.log(park)
+      listParkClues(park)
+    }
+    console.log(clues)
   }, [park])
+
+  useEffect(()=>{
+    renderClue()
+    console.log(clues)
+  }, [parkClues])
 
   const checkInAtPark = () => {
     console.log("push");
@@ -31,8 +42,6 @@ const CheckinButton = (props) => {
 
 const within9Km = () => {
   parks.map((p) => {
-    console.log(p.latitude);
-    console.log(p.longitude);
      if(isPointWithinRadius (
       { latitude: p.latitude, longitude: p.longitude},
       { latitude: lat, longitude: lng },
@@ -47,9 +56,11 @@ const within9Km = () => {
 const listParkClues = () => {
   console.log(park);
   if(!park) {
+    console.log("couldn't find a park")
     return <p>couldn't find a park</p>
   }
-  if(!clues) {
+  if(clues < 1) {
+    console.log("no clues yet, please refresh")
     return <p>no clues yet, please refresh</p>
   }
   console.log(clues)

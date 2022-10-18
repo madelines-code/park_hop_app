@@ -25,6 +25,8 @@ const Protected = () => {
       console.log(res.data);
       let res_kids = await axios.get(`/api/users/${auth.id}/user_kids`);
       setKids(res_kids.data)
+      console.log(res_kids.data);
+
     } catch(err){
       console.log(err)
       console.log(err.response)
@@ -39,6 +41,10 @@ const Protected = () => {
     const filteredKids = kids.filter((kid) => kid.id !== id)
     setKids(filteredKids)
 }
+
+// const updateClues = () => {
+//   setUserclues()
+// }
 
 const editKidPage = (id) => {
   navigate(`/api/kids/${id}`)
@@ -81,9 +87,9 @@ const editKidPage = (id) => {
     <div className='homepage'>
       {auth && <>
       
-      {/* { userclues[0] === undefined &&
-        <Modal2022 user={auth.id}/>
-      } */}
+      { userclues[0] === undefined &&
+        <Modal2022 user={auth.id} clues={userclues} setClues ={setUserclues}/>
+      }
           
       <h2>My Profile</h2>
       <div style={{display: 'flex', flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center'}}>
@@ -102,7 +108,7 @@ const editKidPage = (id) => {
         <button className='profileButtonStyle' onClick={()=>navigate(`/api/users/${auth.id}/edit`)} state = {{auth}} >Edit Profile</button>
         </div>
         </div>
-      <CluesCompleted/>
+      <CluesCompleted user={auth.id} clues={userclues}/>
       <div>
         <h3>Kids</h3>
         <Card.Group style= {{display: 'flex', flexWrap: 'wrap', alignContent: 'center', alignItems: 'centered', justifyContent: 'center'}}> {kids !== {} && renderKids()}</Card.Group> 
